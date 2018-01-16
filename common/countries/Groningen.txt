@@ -1,0 +1,106 @@
+#Country Name: Please see filename.
+
+graphical_culture = westerngfx
+
+color = { 82  139  80 }
+revolutionary_colors = { 0  10  0 }
+
+historical_idea_groups = {
+	trade_ideas
+	maritime_ideas
+	defensive_ideas
+	naval_ideas
+	economic_ideas
+	innovativeness_ideas
+	offensive_ideas
+	defensive_ideas
+}
+
+historical_units = {
+	western_medieval_infantry
+	western_medieval_knights
+	western_men_at_arms
+	dutch_maurician
+	french_caracolle
+	anglofrench_line
+	french_dragoon
+	french_bluecoat
+	french_cuirassier
+	french_impulse
+	mixed_order_infantry
+	open_order_cavalry
+	napoleonic_square
+	napoleonic_lancers
+}
+
+monarch_names = {
+	"Berend #0" = 20
+	"Derk #0" = 20
+	"Edo #0" = 20
+	"Freerk #0" = 20
+	"Lammert #0" = 20
+	"Geert #0" = 10
+	"Henk #0" = 10
+	"Jan #0" = 10
+	"Klaas #0" = 10
+	"Piet #0" = 10
+	"Abel #0" = 0
+	"Abeltje #0" = 0
+	"Aries #0" = 0
+	"August #0" = 0
+	"Ben #0" = 0
+	"Eppie #0" = 0
+	"Evert #0" = 0
+	"Fokko #0" = 0
+	"Dikkie #0" = 0
+	"Dirk #0" = 0
+	"Doewe #0" = 0
+	"Douwe #0" = 0
+	"Egbert #0" = 0
+	"Gerardus #0" = 0
+	"Geuko #0" = 0
+	"Haijo #0" = 0
+	"Hans #0" = 0
+	"Harm #0" = 0
+	"Ibeling #0" = 0
+	"Ienko #0" = 0
+	"Jacob #0" = 0
+	"Johannes #0" = 0
+	"Kasper #0" = 0
+	"Koos #0" = 0
+	"Reinder #0" = 0
+	"Reint #0" = 0
+	"Remmert #0" = 0
+	"Roelf #0" = 0
+	"Roelof #0" = 0
+	"Siebold #0" = 0
+	"Sijzo #0" = 0
+	"Wubbo #0" = 0
+	
+	"Trijn #0" = -1
+	"Ina #0" = -1
+	"Emmie #0" = -1
+	"Dieneke #0" = -1
+	"Antje #0" = -1
+}
+
+leader_names = {
+	Tiddinga Huninga Gockinga
+	Houwerda Lewe Clant Onsta 
+	Ripperda Ewsum Rengers
+	"de Mepsche" Coenders
+}
+
+ship_names = {
+	Lemmer Groningen Drentina Koophandel Veehandel Voorwaarts Jantiena Weltevreden
+	Casina "Twee gezusters" Stroobos Harmina "Drie Gezusters" "Nieuwe Zorg" "Anna Cornelia"
+	"Hunze XIII" Ebenhaezer "Twee gebroeders" Libra Dirkje "De vrouw Janna" "De Deugd"
+	Onderneming Tweelingen Volharding "De Jonge Hendrik" "Burgemeester van Uithuizen"
+	"Noordster" "De Vereeniging" "Goed Vertrouwen" "Hendrika Matriena" Weldaad Assen Veendam Appingedam	
+}
+army_names = {
+	"Leger van $PROVINCE$"  }
+
+fleet_names = {  
+	"Vloot van $PROVINCE$" 
+}

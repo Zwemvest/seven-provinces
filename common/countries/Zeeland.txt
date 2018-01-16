@@ -1,0 +1,104 @@
+#Country Name: Please see filename.
+
+graphical_culture = westerngfx
+
+color = { 231  112  150 }
+
+historical_idea_groups = {
+	defensive_ideas
+	maritime_ideas
+	trade_ideas
+	exploration_ideas
+	economic_ideas
+	naval_ideas
+	religious_ideas
+	offensive_ideas
+}=
+
+historical_units = {
+	western_medieval_infantry
+	western_medieval_knights
+	western_men_at_arms
+	dutch_maurician
+	french_caracolle
+	anglofrench_line
+	french_dragoon
+	french_bluecoat
+	french_cuirassier
+	french_impulse
+	mixed_order_infantry
+	open_order_cavalry
+	napoleonic_square
+	napoleonic_lancers
+}
+
+monarch_names = {
+	"Willem #0" = 40
+	"Albert #0" = 20
+	"Johan #0" = 15	
+	"Lodewijk #0" = 15
+	"Eberhard #0" = 15
+	"Dirk #0" = 5
+	"Floris #0" = 5
+	"Jan #0" = 5
+	"Arnolf #0" = 5
+	"Adriaan #0" = 0
+	"Anton #0" = 0
+	"Barthout #0" = 0
+	"Christiaan #0" = 0
+	"Constantijn #0" = 0
+	"Daniël #0" = 0
+	"Filips #0" = 0	
+	"Frans #0" = 0
+	"Gabriël #0" = 0
+	"Gaspar #0" = 0
+	"Gerardus #0" = 0
+	"Gerbrand #0" = 0
+	"Hendrik #0" = 0
+	"Jeroen #0" = 0
+	"Joost #0" = 0
+	"Karel #0" = 0
+	"Kasper #0" = 0
+	"Lamoraal #0" = 0
+	"Hugo #0" = 0
+	"Jacob #0" = 0
+	"Pieter #0" = 0
+	"Procop #0" = 0
+	"Prosper #0" = 0
+	"Raes #0" = 0
+	"Rembrandt #0" = 0
+	"Simon #0" = 0
+	"Rodolf #0" = 0
+	"Roeland #0" = 0
+	
+	"Jakoba #0" = -15
+	"Margaretha #0" = -10
+	"Isabella #0" = -1
+	"Johanna #0" = -1
+	"Maria #0" = -1
+	"Mathilde #0" = -1
+	"Aleid #0" = -1
+	"Katherin #0" = -1
+}
+
+leader_names = {
+	Boddaert Boeye Boogaert "de Brauw" "van Citters"
+	"Collot d’Escury" "van Doorn" "de Jonge" "de Jonge van Ellemeet" 
+	"de Jonge van Zwijnsbergen" "Westpalm van Hoorn van Burgh" 
+	Huijssen Snouck Hurgronje "van Panhuys" Schorer Steengracht 
+	"van Swinderen" Versluys "van Tuyll van Serooskerke"
+}
+
+ship_names = {
+	Zeelandia "Ter Neuze" Buffel Vriendschap Fridius Duo 
+	Zandkreek Maria Cormorant "Fluisterende Hoop" Anja
+	Middelburg "Zeeuwsch Vlaanderen" Sympathie Scheldehulk
+	Zuidvliet Schelde Onderons "op Hoop van Zegen" Succes "Eerste Zorg"
+	Terneuzen Risico
+}
+army_names = {
+	"Leger van $PROVINCE$"  }
+
+fleet_names = {  
+	"Vloot van $PROVINCE$" 
+}

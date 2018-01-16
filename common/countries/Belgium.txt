@@ -1,0 +1,130 @@
+#Country Name: Please see filename.
+
+graphical_culture = westerngfx
+color = { 255  233  54 }
+
+revolutionary_colors = { 5  1  8 }
+
+preferred_religion = catholic
+
+historical_idea_groups = {
+	defensive_ideas
+	administrative_ideas
+	maritime_ideas
+	trade_ideas
+	aristocratic_ideas
+	religious_ideas
+	quality_ideas
+	economic_ideas
+}
+
+historical_units = {
+	western_medieval_infantry
+	western_medieval_knights
+	western_men_at_arms
+	swiss_landsknechten
+	dutch_maurician
+	french_caracolle
+	swedish_gallop
+	austrian_tercio
+	austrian_grenzer
+	french_bluecoat
+	french_dragoon
+	french_impulse
+	mixed_order_infantry
+	open_order_cavalry
+	napoleonic_square
+	napoleonic_lancers
+}
+
+monarch_names = {
+	"Leopold #0" = 40
+	"Albert #0" = 40
+	"Charles #0" = 20
+	"Philippe #0" = 20
+	"Louis #0" = 20
+	"Baldwin #0" = 15
+	"Jan #0" = 15
+	"Pierre #0" = 15
+	"Arnold #0" = 10
+	"Anton #0" = 10
+	"Ferdinand #0" = 10
+	"Guillaume #0" = 10
+	"Jean #0" = 10
+	"Hendrik #0" = 0
+	"Jean François #0" = 10
+	"Isaac #0" = 10
+	"Marc #0" = 10
+	"Johan #0" = 10
+	"Wouter #0" = 10
+	"Jacques #0" = 10
+	"Paul #0" = 10
+	"Simon #0" = 10
+	"François #0" = 0
+	"Lode #0" = 0
+	"Barthout #0" = 0
+	"Valentine #0" = 0
+	"Alexandre #0" = 0
+	"Thomas #0" = 0
+	"Julien #0" = 0
+	"Sebastien #0" = 0
+	"Florent #0" = 0
+	"Alphonse #0" = 0
+	"Samson #0" = 0
+	"Gert #0" = 0
+	"Alberto #0" = 0
+	"Octaaf #0" = 0
+	"Joop #0" = 0
+	"Gerben #0" = 0
+	"Godfried #0" = 0
+	"Piet #0" = 0
+	"Berend #0" = 0
+	"Hugo #0" = 0
+	"Lucas #0" = 0
+	"Joseph #0" = 0
+	
+	"Pauline #0" = -1
+	"Françoise #0" = -1
+	"Marie #0" = -1
+	"Margaretha #0" = -1
+	"Fabiola #0" = -1
+}
+
+leader_names = {
+	Arberg Arenberg "d'Aspremont Lynden" Bernadotte "de Bethune Hesdigneul"
+	"de Baenst" "de Baillet Latour" Berlaymont Berthout Borluut
+	Brimeu "de Brouckère" "van Caloen" Cröy "de Bosschaert" "van de Elzas"
+	Gent "de Hemptinne" "Hénin-Liétard" Hulsberg "Janssens de Bisthoven"
+	"t'Kint de Roodenbeke" Lalaing Lannoy Laurin "van Leefael" 
+	Ligne Limbourg "Looz-Corswarem" Luxembourg 
+	Merode Nothomb Schoonvorst "t'Serclaes" Snoy 
+	Spoelberch "d'Udekem d'Acoz" "d'Ursel" 
+	"van Valkenburg" "Vilain XIIII"
+	"Visart de Bocarmé" "de Waepenaert" "van de Werve" 
+	
+	"de Riquet de Caraman" 
+	"de Beaufort Spontin"  
+	Corsselaar Hessen "van Cordekin"
+	"van Wijnvliet" "Montfort-l'Amaury" 
+	Lothier Glymes 
+	
+	"van Brabant" Reginar "van Leuven" "de Lorraine"
+	"Leuven-Gaasbeek" "de Dampierre" "van Vlaanderen" 
+	"de Namours" "de Hainaut" 
+	"d'Artois" "de Bourgogne" 
+}
+
+ship_names = {
+    Albatros Albertville Antverpia Anversville Avontuur "Baron Osy" Baudouinville Belgenland Belgica Brussels Belval Caucasier "Comte de Smet de Naeyer" "Céphée" Charlesville
+	Diamant  Flandre Gent "d'Artagnan" "de Gentse barge" Escaut Espagne Flandria Gandia "l'Avenir" "la Campine" "Léopold" Maaskant "Marie-Henriëtte" Mayumbe Memling
+	Methania "Mineral Marchienne" Moero "Pays de Waes" 
+}
+
+
+army_names = {
+	"Armée de Belgique" "Vlaamse Leger" "Armée de Wallonie" "Armée de $PROVINCE$" 
+}
+
+fleet_names = {
+	"Oostendse Vloot" "Scheldevloot" "Flotte de Belgique" "Vloot van $PROVINCE$" 
+}
