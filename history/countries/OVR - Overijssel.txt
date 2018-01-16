@@ -3,5 +3,5 @@ government_rank = 1
 primary_culture = dutch
 religion = catholic
 technology_group = western
-capital = 4349 - Overijssel
-fixed_capital = 4349 # Cannot move capital away from this province & no power cost to move to it
+capital = 5001 - Overijssel
+fixed_capital = 5001 # Cannot move capital away from this province & no power cost to move to it

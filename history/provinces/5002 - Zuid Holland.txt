@@ -1,4 +1,4 @@
-# 4350 Zuid Holland - Principal cities: Den Haag, Delft Rotterdam
+# 5002 Zuid Holland - Principal cities: Den Haag, Delft Rotterdam
 
 owner = HOL
 controller = HOL
