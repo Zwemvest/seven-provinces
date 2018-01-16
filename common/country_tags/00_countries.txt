@@ -486,6 +486,7 @@ UES = "countries/Uesugi.txt"
 YMN = "countries/Yamana.txt"
 RFR	= "countries/Nanbu.txt"
 ASK = "countries/Ashikaga.txt"
+KTB = "countries/Kitabatake.txt"
 
 ANU = "countries/Ainu.txt"
 
@@ -756,7 +757,13 @@ LNO = "countries/Lanao.txt"
 LUW = "countries/Luwu.txt"
 MGD = "countries/Maguindanao.txt"
 TER = "countries/Ternate.txt"
-TID  = "countries/Tidore.txt"
+TID = "countries/Tidore.txt"
+MAS = "countries/Madyaas.txt"
+PGS = "countries/Pangasinan.txt"
+TDO = "countries/Tondo.txt"
+MNA = "countries/Maynila.txt"
+CEB = "countries/Cebu.txt"
+BTU = "countries/Butuan.txt"
 
 #South American Additions
 CSU = "countries/Cusco.txt"

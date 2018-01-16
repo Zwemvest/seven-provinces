@@ -132,8 +132,8 @@
 4173 = "Syrmien"
 4237 = "Olmütz"
 
-4348 = "Umland"
-4349 = "Overijssel"
-4350 = "Südholland"
-4351 = "Maëstricht"
-4352 = "Obergeldern"
+5000 = "Umland"
+5001 = "Overijssel"
+5002 = "Südholland"
+5003 = "Maëstricht"
+5004 = "Obergeldern"

@@ -224,7 +224,7 @@
 4141 = "Noard-Fryslân"
 4237 = "Olomouc"
 
-4348 = "Ommelannen"
-4349 = "Oerisel"
-4350 = "Súd-Hollân"
-4352 = "Oppergelder"
+5000 = "Ommelannen"
+5001 = "Oerisel"
+5002 = "Súd-Hollân"
+5004 = "Oppergelder"

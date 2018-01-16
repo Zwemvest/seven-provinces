@@ -205,8 +205,10 @@
 2665 = "Los Ais"
 2666 = "San Saba"
 
-4348 = "Groninga"
-4349 = "Transisalania"
-4350 = "Holanda Meridional"
-4351 = "Mastrique"
-4352 = "Güeldres Superior"
+4351 = "Negros"
+
+5000 = "Groninga"
+5001 = "Transisalania"
+5002 = "Holanda Meridional"
+5003 = "Mastrique"
+5004 = "Güeldres Superior"

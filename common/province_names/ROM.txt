@@ -334,6 +334,6 @@
 161 = "Targoviste"
 1756 = "Moesia"
 
-4349 = "Transisalania"
-4351 = "Mosa Trajectum"
-4352 = "Blariaco"
+5001 = "Transisalania"
+5003 = "Mosa Trajectum"
+5004 = "Blariaco"

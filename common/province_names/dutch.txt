@@ -223,8 +223,8 @@
 4173 = "Syrmië"
 4237 = "Olomouc"
 
-4348 = "Ommelanden"
-4349 = "Overijssel"
-4350 = "Zuid Holland"
-4351 = "Maastricht"
-4352 = "Oppergelre"
+5000 = "Ommelanden"
+5001 = "Overijssel"
+5002 = "Zuid Holland"
+5003 = "Maastricht"
+5004 = "Oppergelre"
