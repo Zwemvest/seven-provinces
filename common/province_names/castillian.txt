@@ -21,11 +21,11 @@
 90 = "Flandes"
 92 = "Brabante"
 96 = "Zelanda"
-97 = "Holanda Septentrional"
+97 = "Holanda"
 98 = "Utreque"
 99 = "Güeldres"
 100 = "Frisia"
-1742 = "Limburgo"
+1742 = "Alto Güeldres"
 1744 = "Antuerpia"
 1865 = "Gante"
 
@@ -207,8 +207,6 @@
 
 4351 = "Negros"
 
-5000 = "Groninga"
-5001 = "Transisalania"
-5002 = "Holanda Meridional"
-5003 = "Mastrique"
-5004 = "Güeldres Superior"
+4381 = "Transisalania"
+4382 = "Groninga"
+4383 = "La Haya"
