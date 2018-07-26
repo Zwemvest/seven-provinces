@@ -1,7 +1,0 @@
-government = feudal_monarchy
-government_rank = 1
-technology_group = western
-religion = catholic
-primary_culture = dutch
-capital = 96 # Zeeland
-fixed_capital = 96 # Cannot move capital away from this province & no power cost to move to it

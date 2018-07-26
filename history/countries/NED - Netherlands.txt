@@ -4,7 +4,7 @@ technology_group = western
 primary_culture = dutch
 add_accepted_culture = flemish
 religion = catholic
-capital = 97 #Holland
+capital = 4383 #Haag
 
 #1477.1.5 = {
 #	government_rank = 1

@@ -4,4 +4,4 @@ tags={
 	"Overhaul"
 }
 picture="dutch_republic.png"
-supported_version="1.23.*.*"
+supported_version="1.25.*.*"

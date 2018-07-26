@@ -1,4 +1,4 @@
-# 100 Friesland - Principal cities: Leeuwarden
+# 100 Friesland - Principal cities: Leeuwarden & Harlingen 
 
 owner = FRI
 controller = FRI
@@ -7,8 +7,8 @@ is_city = yes
 culture = frisian
 religion = catholic
 hre = no
-base_tax = 4 
-base_production = 4
+base_tax = 6
+base_production = 6
 trade_goods = livestock 
 base_manpower = 2
 add_core = FRI
@@ -26,7 +26,7 @@ discovered_by = ottoman
 	controller = REB } # 'Kings' Pier Gerlofs Donia and Wijerd Jelckama
 1519.1.12 = { owner = SPA add_core = SPA remove_core = HAB } # Unification of Spain under Charles
 1524.1.1 = { controller = SPA } # Charles V annexes Friesland
-1536.1.1 = { religion = reformed }
+1536.1.1 = { religion = reformed reformation_center = reformed }
 1549.11.4 = { owner = NED controller = NED add_core = NED remove_core = SPA }
 1559.5.12 = { unrest = 3 } # New bishoprics established in the Lowlands create an outrage
 1565.1.1 = { unrest = 5 } # Letters of Segovia, harsh persecution of Calvinists advocated by Philip I
@@ -39,8 +39,8 @@ discovered_by = ottoman
 1577.2.12 = { unrest = 16 } # The 'Perpetual Edict' (Eeuwig Edict) is accepted by Don Juan
 1579.1.23 = { controller = NED unrest = 0 } # Union of Utrecht - Friesland joins
 1648.10.24 = { hre = no } # The Peace of Westphalia
-1681.1.1 = { base_tax = 5 
-base_production = 5 } # Protestants expelled from France
+1681.1.1 = { base_tax = 9 
+base_production = 9 } # Protestants expelled from France
 1810.7.10 = {	owner = FRA
 	controller = FRA
 	add_core = FRA

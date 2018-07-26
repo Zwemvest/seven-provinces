@@ -1,4 +1,4 @@
-# 99 Gelre - Principal cities: Arnhem, Zwolle & Nijmegen
+# 99 Gelre - Principal cities: Arnhem & Nijmegen
 
 owner = GEL
 controller = GEL 
@@ -7,18 +7,21 @@ is_city = yes
 culture = dutch
 religion = catholic
 hre = yes
-base_tax = 4 
-base_production = 4
+base_tax = 6 
+base_production = 6
 trade_goods = livestock
-base_manpower = 2
+base_manpower = 3
 add_core = GEL
 discovered_by = eastern
 discovered_by = western
 discovered_by = muslim
 discovered_by = ottoman
 
-
-1473.2.23 = { owner = BUR controller = BUR add_core = BUR } # Charles the Bold annexes Gelre
+1473.2.23 = {
+	owner = BUR
+	controller = BUR
+	add_core = BUR
+} # Charles the Bold annexes Gelre
 1477.1.5 = {
 	owner = HAB
 	controller = HAB

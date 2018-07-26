@@ -1,0 +1,102 @@
+country_decisions = {
+
+	belgium_buffer = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			NOT = { has_country_flag = belgium_buffer_flag }
+			NOT = { exists = BEL }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			NOT = { government = republic }
+			NOT = { government = celestial_empire }
+			OR = {
+				owns = 90
+				owns = 91
+				owns = 92
+				owns = 1744
+				is_emperor
+			}
+			AND = {
+				exists = NED
+				exists = FRA
+				hre_size = 1
+				FRA = { is_part_of_hre = no }							
+				FRA = { is_emperor = no }	
+			}
+			NOT = {	primary_culture = flemish }
+			NOT = {	primary_culture = walloon }
+			}
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 3
+				}
+			}
+			current_age = age_of_revolutions
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 90 # Vlaanderen
+				province_id = 91 # Hainaut
+				province_id = 92 # Brabant
+				province_id = 1744 # Antwerpen
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			adm_tech = 22
+			is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			NOT = { exists = BEL }
+			owns_core_province = 90 # Vlaanderen
+			owns_core_province = 91 # Hainaut
+			owns_core_province = 92 # Brabant
+			owns_core_province = 1744 # Antwerpen
+		}
+	 	effect = {
+			add_prestige = 10
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			every_owned_province = {
+				limit = {
+					OR = {
+						area = flanders_area
+						area = wallonia_area
+						area = picardy_area
+					}
+				}
+				add_core = BEL
+				remove_core = ROOT
+			}
+			release = BEL
+			create_march = BEL
+			BEL= { change_primary_culture = ROOT }
+			BEL= { change_religion = ROOT }
+			set_country_flag = belgium_buffer_flag
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					tag = NED
+					tag = FRA
+					92 = { is_in_capital_area = yes } 
+				}
+			}
+		}
+		ai_importance = 100
+	}
+	
+}

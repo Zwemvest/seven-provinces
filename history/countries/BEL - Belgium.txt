@@ -1,5 +1,5 @@
 government = feudal_monarchy
-government_rank = 1
+government_rank = 2
 technology_group = western
 religion = catholic
 primary_culture = flemish
@@ -8,14 +8,108 @@ religion = catholic
 capital = 92 # Brabant
 
 # Belgium exists as a revolter state in 1790.
+1715.1.11  = { 
+	government = feudal_monarchy
+	monarch = {
+		name = Eugenius
+		dynasty = "de Savoie"
+		birth_date = 1663.10.18
+		culture = cosmopolitan_french
+		adm = 5
+		dip = 5
+		mil = 6
+    		leader = {
+    	    		name = "Eugenius de Savoi"
+     	   		type = general
+    	    		fire = 5
+    	    		shock = 3
+     	   		manuever = 2
+   	  	   	siege = 6
+   	 	}
+	}
+1724.1.11  = { 
+	monarch = {
+		name = "Maria Elisabeth"
+		dynasty = "von Habsburg"
+		birth_date = 1680.2.13
+		culture = austrian
+		female = yes
+	}
+1741.8.26  = { 
+	monarch = {
+		name = "Karel"
+		dynasty = "de Lorraine"
+		birth_date = 1712.12.12
+		culture = cosmopolitan_french
+	}
+1744.1.1  = { 
+	monarch = {
+		name = "Maria Anna"
+		dynasty = "de Lorraine"
+		birth_date = 1718.9.14
+		culture = austrian
+		female = yes
+	}
+1744.12.16  = { 
+	monarch = {
+		name = "Ulrich"
+		dynasty = "von Löwendal"
+		birth_date = 1700.4.6
+		culture = danish
+	}
+1746.1.1  = { 
+	monarch = {
+		name = "Karl Josef"
+		dynasty = "Batthyány"
+		birth_date = 1697.3.28
+		culture = hungarian
+	}
+1747.1.1  = { 
+	monarch = {
+		name = Jointe
+		regent = yes
+		birth_date = 1744.12.16
+	}
+1749.1.1  = { 
+	monarch = {
+		name = "Karel"
+		dynasty = "de Lorraine"
+		birth_date = 1712.12.12
+		culture = cosmopolitan_french
+	}
+1780.7.4  = { 
+	monarch = {
+		name = "Maria Christina"
+		dynasty = "von Habsburg"
+		birth_date = 1742.5.13
+		culture = austrian
+		female = yes
+	}
+}# Belgium exists as a revolter state in 1790.
 1790.1.11  = { 
-	government = administrative_republic
+	government = oligarchic_republic
 	monarch = {
 		name = Hendrik
 		dynasty = "van der Noot"
 		birth_date = 1731.1.7
-		adm = 4
+		adm = 3
 		dip = 1
 		mil = 1
 	}
 }
+1790.12.1  = { 
+	government = feudal_monarchy
+	monarch = {
+		name = "Maria Christina"
+		dynasty = "von Habsburg"
+		birth_date = 1742.5.13
+		culture = austrian
+		female = yes
+	}
+1793.1.1  = { 
+	monarch = {
+		name = "Karel"
+		dynasty = "von Habsburg"
+		birth_date = 1771.9.5
+		culture = austrian
+	}

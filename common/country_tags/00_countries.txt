@@ -228,6 +228,7 @@ LUX	= "countries/Luxembourg.txt"
 NED	= "countries/Netherlands.txt"
 UTR	= "countries/Utrecht.txt"
 GRO  = "countries/Groningen.txt" 
+BEL  = "countries/Belgium.txt" 
 
 #Russia 
 ARM	= "countries/Armenia.txt"

@@ -1,18 +1,18 @@
 name = "Brabant Revolution"
 
 war_goal = {
-	type = annex_country
-	casus_belli = cb_annex
+	type = defend_capital_independence
+	casus_belli = cb_independence_war
 	province = 92 # Brabant
 }
 
 1790.1.11 = {
-	add_attacker = HAB
-	add_defender = BEL
+	add_attacker = BEL
+	add_defender = HAB
 }
 
 # Leopold II restores order
 1790.12.1 = {
-	rem_attacker = HAB
-	rem_defender = BEL
+	rem_attacker = BEL
+	rem_defender = HAB
 }
