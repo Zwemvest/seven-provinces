@@ -223,6 +223,6 @@
 4173 = "Syrmië"
 4237 = "Olomouc"
 
-4381 = "Oversticht"
+4381 = "Overijssel"
 4382 = "Groningen"
 4383 = "Den Haag"
