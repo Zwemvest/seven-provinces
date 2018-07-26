@@ -90,8 +90,6 @@
 2469 = "Mazagão"
 2999 = "Ormuz" 
 
-5000 = "Groninga"
-5001 = "Overissel"
-5002 = "Holanda do Sul"
-5003 = "Mastrique"
-5004 = "Gueldres Superior"
+4381 = "Overissel"
+4382 = "Groninga"
+4383 = "Haia"

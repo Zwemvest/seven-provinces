@@ -289,6 +289,9 @@
 1760 = "Confluentes"
 2973 = "Amisia" #For the Ems river
 2975 = "Clivia"
+4381 = "Transisalania"
+4382 = "Groninga"
+4383 = "Haga"
 
 #Germania Superior
 64 = "Landishuta"
@@ -333,7 +336,3 @@
 160 = "Dacia Malvensis"
 161 = "Targoviste"
 1756 = "Moesia"
-
-5001 = "Transisalania"
-5003 = "Mosa Trajectum"
-5004 = "Blariaco"

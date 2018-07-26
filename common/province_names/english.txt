@@ -169,8 +169,7 @@
 2670 = "Toronto"
 2671 = "Ronde"
 
-5002 = "South Holland"
-5004 = "Upper Guelders"
-
 #Ireland
-4120 = "King's County"
+4379 = "King's County"
+
+4383 = "The Hague"

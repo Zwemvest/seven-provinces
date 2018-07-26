@@ -78,6 +78,7 @@
 1174 = "Walfischbucht"
 1318 = "Spisz"
 1381 = "Zips"
+1742 = "Obergeldern"
 1743 = "Kamerich"
 1744 = "Antorf"
 1745 = "Kantabrien"
@@ -132,8 +133,5 @@
 4173 = "Syrmien"
 4237 = "Olmütz"
 
-5000 = "Umland"
-5001 = "Overijssel"
-5002 = "Südholland"
-5003 = "Maëstricht"
-5004 = "Obergeldern"
+4381 = "Oberyssel"
+4382 = "Grönnen"
