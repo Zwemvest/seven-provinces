@@ -12,6 +12,7 @@ base_production = 4
 base_manpower = 2
 trade_goods = cloth 
 add_core = FRI
+add_core = GRO
 discovered_by = western
 discovered_by = eastern
 discovered_by = muslim

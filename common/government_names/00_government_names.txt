@@ -3261,34 +3261,71 @@ frisian_freedom = {
 		primary_culture = frisian
 	}
 }
+
+#republic_dutch = {
+#	rank = {
+#		1 = REPUBLIC
+#		2 = UNITED_PROVINCES
+#		3 = GREAT_REPUBLIC
+#	}
+#
+#	ruler_male = {
+#		1 = GRAND_PENSIONARY
+#		2 = STADTHOLDER
+#		3 = GREAT_STADTHOLDER
+#	}
+#
+#	ruler_female = {
+#		1 = GRAND_PENSIONARY_fem
+#		2 = STADTHOLDERESS
+#		3 = GREAT_STADTHOLDERESS
+#	}
+#
+#
+#	trigger = {
+#		government = republic
+#		OR = { 
+#			primary_culture = dutch
+#			primary_culture = frisian
+#			primary_culture = flemish
+#		}
+#		NOT = { government = revolutionary_republic }
+#		NOT = { government = republican_dictatorship }
+#		NOT = { government = dutch_republic }
+#	}
+#}
+
 dutch_republic = {
 	rank = {
-		1 = REPUBLIC
 		2 = UNITED_PROVINCES
-		3 = GREAT_REPUBLIC
 	}
 
 	ruler_male = {
-		1 = GRAND_PENSIONARY
 		2 = STADTHOLDER
-		3 = GREAT_STADTHOLDER
 	}
 
 	ruler_female = {
-		1 = GRAND_PENSIONARY_fem
 		2 = STADTHOLDERESS
-		3 = GREAT_STADTHOLDERESS
+	}
+	consort_male = {
+		2 = RAADPENSIONARIS
 	}
 
+	consort_female = {
+		2 = RAADPENSIONARIS
+	}
+	
+	heir_male = {
+		2 = HEIR
+	}
+	
+	heir_female = {
+		2 = HEIR
+	}
+	
+
 	trigger = {
-		government = republic
-		OR = { 
-			primary_culture = dutch
-			primary_culture = frisian
-			primary_culture = flemish
-		}
-		NOT = { government = revolutionary_republic }
-		NOT = { government = republican_dictatorship }
+		government = dutch_republic
 	}
 }
 
