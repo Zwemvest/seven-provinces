@@ -1340,22 +1340,21 @@ dutch_republic = {
 	color = { 220 120 20 }
 	
 	unique_government = yes
-
-	duration = 4
 	
 	valid_for_new_country = no
 	allow_convert = no
+	#duration = 4
 	
 	republican_name = no
 	royal_marriage = yes
 	
 	dutch_mechanics = yes
+	militarised_society = yes
 	
 	max_states = 2
 
 	heir = yes
 	queen = yes
-	maintain_dynasty = yes
 	
 	valid_for_nation_designer = yes
 	nation_designer_cost = 40
@@ -1467,7 +1466,7 @@ prussian_monarchy = {
 	valid_for_nation_designer = yes
 	nation_designer_cost = 100
 
-	militarised_society = yes
+	#militarised_society = yes
 
 	#bonus
 	max_states = 2

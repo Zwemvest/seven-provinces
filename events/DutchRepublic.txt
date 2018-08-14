@@ -1,0 +1,830 @@
+namespace = dutch_republic
+
+# Dutch Republic
+country_event = {
+	id = dutch_republic.2906
+	title = dutch_republic.2906.t
+	
+	is_triggered_only = yes
+	#TODO Make hidden
+	#hidden = yes
+	
+	trigger = {
+		government = dutch_republic
+	}
+	
+	immediate = {
+		if = { 
+			limit = { NOT = { has_country_flag = dutch_republic_succession_in_progress } }
+			
+			set_country_flag = dutch_republic_succession_in_progress
+			
+			# Normal succession, Heir becomes Stadtholder
+			if = {
+				limit = {
+					has_consort_regency = no
+					has_regency_regency = no
+					has_ruler_flag = dutch_republic_awaiting_succession
+					NOT = { has_country_flag = dutch_republic_illegitimate }
+					NOT = { has_country_flag = dutch_republic_succession_in_progress }
+				}
+				country_event = { 
+					id = dutch_republic.2907
+				}
+			}
+			
+			# Panic succession, no Stadtholder or heir to the Stadtholder
+			if = {
+				limit = {
+					has_consort_regency = no
+					has_regency_regency = no
+					NOT = {  has_ruler_flag = dutch_republic_awaiting_succession }
+					NOT = { has_country_flag = dutch_republic_illegitimate }
+					NOT = { has_country_flag = dutch_republic_succession_in_progress }
+				}
+				country_event = { 
+					id = dutch_republic.2908
+				}
+			}
+			
+			# Illegitimate succession
+			if = {
+				limit = {
+					has_consort_regency = no
+					has_regency_regency = no
+					has_country_flag = dutch_republic_illegitimate
+					NOT = { has_country_flag = dutch_republic_succession_in_progress }
+				}
+				country_event = { 
+					id = dutch_republic.2910
+				}
+			}
+			
+			## There is an heir, but not old enough. Trigger a Stadtholderless era.
+			#if = {
+			#	limit = {
+			#		has_heir = yes
+			#		NOT = {
+			#			heir_age = 15
+			#		}
+			#		has_consort_regency = yes
+			#		NOT = { 
+			#			has_country_flag = stadtholderless_period
+			#		}
+			#	}
+			#	country_event = { 
+			#		id = dutch_republic.2908
+			#	}
+			#}
+			## No heir. Trigger a Stadtholderless era.
+			#if = {
+			#	limit = {
+			#		has_heir = no
+			#		has_consort = no
+			#		NOT = { 
+			#			has_country_flag = stadtholderless_period
+			#		}
+			#	}
+			#	country_event = { 
+			#		id = dutch_republic.2909
+			#	}
+			#}
+			##  Stadtholderless Era is in progress, and there is an heir, but the heir is not old enough. Continue the Stadtholderless era.
+			#if = {
+			#	limit = {
+			#		has_heir = yes
+			#		NOT = {
+			#			heir_age = 15
+			#		}
+			#		has_regency = yes
+			#		has_consort_regency = no
+			#		has_country_flag = stadtholderless_period
+			#	}
+			#	country_event = { 
+			#		id = dutch_republic.2910
+			#	}
+			#}
+			##  Stadtholderless Era is in progress, and there is no heir. 
+			#if = {
+			#	limit = {
+			#		has_heir = no
+			#		has_consort = no
+			#		has_country_flag = stadtholderless_period
+			#	}
+			#	country_event = { 
+			#		id = dutch_republic.2911
+			#	}
+			#}
+			
+		}
+	}
+	
+	option = {
+	}
+}
+
+# Normal succession, Heir becomes Stadtholder
+country_event = {
+	id = dutch_republic.2907
+	title = dutch_republic.2907.t
+	desc = dutch_republic.2907.d
+	picture = ELECTION_REPUBLICAN_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		government = dutch_republic
+		has_consort_regency = no
+		has_regency_regency = no
+		has_ruler_flag = dutch_republic_awaiting_succession
+	}
+	
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					has_country_flag = stadtholderless_period
+					has_ruler_flag = dutch_republic_awaiting_succession
+				}
+				clr_country_flag = stadtholderless_period
+				clr_ruler_flag = dutch_republic_awaiting_succession
+			}
+			while = {
+				limit = { has_consort = yes  }
+				remove_consort = yes
+			}
+		}
+	}
+	
+	# Elect Statist
+	option = {
+		name = dutch_republic.2907.a
+		add_republican_tradition = -5
+		change_statists_vs_orangists = -0.33
+		define_consort = {
+			adm = 3
+			male = yes
+		}
+		custom_tooltip = dutch_republic.statist
+		set_consort_flag = dutch_republic_regent_set
+		set_consort_flag = dutch_republic_has_statist
+		clr_country_flag = dutch_republic_succession_in_progress
+	}
+	# Elect Orangist
+	option = {
+		name = dutch_republic.2907.b
+		add_republican_tradition = -5
+		change_statists_vs_orangists = 0.33
+		define_consort = {
+			mil = 3
+			male = yes
+		}
+		custom_tooltip = dutch_republic.orangist
+		set_consort_flag = dutch_republic_regent_set
+		set_consort_flag = dutch_republic_has_orangist
+		clr_country_flag = dutch_republic_succession_in_progress
+	}
+	#country_event = {
+	#	#TODO Implement Event
+	#    id = dutch_republic.2329
+	#	#TODO Increase days
+	#	days = 30
+	#}
+}
+
+# Panic succession, no Stadtholder or heir to the Stadtholder
+country_event = {
+	id = dutch_republic.2908
+	title = dutch_republic.2908.t
+	desc = dutch_republic.2908.d
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		government = dutch_republic
+		has_consort_regency = no
+		has_regency_regency = no
+		NOT = { has_ruler_flag = dutch_republic_awaiting_succession }
+	}
+	
+	immediate = {
+		set_country_flag = dutch_republic_illegitimate
+		while = {
+			limit = { 
+				has_consort = yes  
+			}
+			remove_consort = yes
+		}
+	}
+	
+	option = {
+		name = dutch_republic.2908.a
+		add_republican_tradition = -20
+		change_statists_vs_orangists = -0.5
+		country_event = {
+			id = dutch_republic.2909
+			days = 100
+			random = 300
+		}
+		define_consort = {
+			adm = 3
+			male = yes
+		}
+	}
+}
+
+# Panic election after panic succession
+country_event = {
+	id = dutch_republic.2909
+	title = dutch_republic.2909.t
+	desc = dutch_republic.2909.d
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		government = dutch_republic
+		has_consort_regency = no
+		has_regency_regency = no
+	}
+	
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					has_country_flag = stadtholderless_period
+					has_ruler_flag = dutch_republic_awaiting_succession
+				}
+				clr_country_flag = stadtholderless_period
+				clr_ruler_flag = dutch_republic_awaiting_succession
+			}
+			
+			#Local Noble:
+			if = {
+				limit = {
+					any_owned_province = {
+						has_estate = estate_nobles
+					}
+				}
+				random_owned_province = {
+					limit = { has_estate = estate_nobles }
+					save_event_target_as = noble_province
+				}
+			}
+			#Local Merchant: 
+			if = {
+				limit = {
+					any_owned_province = {
+						has_estate = estate_burghers
+					}
+				}
+				random_owned_province = {
+					limit = { has_estate = estate_burghers }
+					save_event_target_as = burgher_province
+				}
+			}
+		}
+	}
+	# Elect current ruler
+	option = {
+		name = dutch_republic.2909.a
+		if = {
+			limit = {
+				has_dlc = "The Cossacks"
+				has_estate = estate_nobles
+			}
+			add_estate_loyalty = {
+				estate = estate_nobles
+				loyalty = 20
+			}
+		}
+		if = {
+			limit = {
+				has_dlc = "The Cossacks"
+				has_estate = estate_burghers
+			}
+			add_estate_loyalty = {
+				estate = estate_burghers
+				loyalty = -15
+			}
+		}
+		add_stability = -2
+		add_republican_tradition = -15
+		change_statists_vs_orangists = 0.33
+		define_consort = { male = yes }
+		set_consort_flag = dutch_republic_regent_set
+		set_consort_flag = dutch_republic_has_orangist
+		clr_country_flag = dutch_republic_succession_in_progress
+		clr_country_flag = dutch_republic_illegitimate
+		spawn_rebels = {
+			type = particularist_rebels
+			size = 3
+		}
+	}
+	# Local Noble
+	option = {
+		name = dutch_republic.2909.b
+		if = {
+			limit = { 
+				has_heir = yes  
+			}
+			spawn_rebels = {
+				type = pretender_rebels
+				size = 1
+				use_heir_as_leader = yes
+			}
+		}
+		if = {
+			limit = {
+				has_dlc = "The Cossacks"
+				has_estate = estate_nobles
+			}
+			add_estate_loyalty = {
+				estate = estate_nobles
+				loyalty = 20
+			}
+		}
+		if = {
+			limit = {
+				has_dlc = "The Cossacks"
+				has_estate = estate_burghers
+			}
+			add_estate_loyalty = {
+				estate = estate_burghers
+				loyalty = -15
+			}
+		}
+		add_republican_tradition = -10
+		change_statists_vs_orangists = 0.33
+		if = {
+			limit = {
+				has_saved_event_target = noble_province
+			}
+			define_ruler = {
+				age = 35
+				hide_skills = yes
+				culture = event_target:noble_province
+			}
+		}
+		else = {
+			define_ruler = {
+				age = 35
+				hide_skills = yes
+			}
+		}
+		define_consort = { male = yes }
+		set_consort_flag = dutch_republic_regent_set
+		set_consort_flag = dutch_republic_has_orangist
+		clr_country_flag = dutch_republic_succession_in_progress
+		clr_country_flag = dutch_republic_illegitimate
+	}
+	# Foreign Noble
+	option = {
+		name = dutch_republic.2909.c
+		trigger = {
+			any_neighbor_country = {
+				government = monarchy
+				has_regency = no
+				NOT = {
+					is_rival = ROOT
+				}
+				religion = ROOT
+			}
+		}
+		if = {
+			limit = { 
+				has_heir = yes  
+			}
+			spawn_rebels = {
+				type = pretender_rebels
+				size = 1
+				use_heir_as_leader = yes
+			}
+		}
+		if = {
+			limit = {
+				has_dlc = "The Cossacks"
+				has_estate = estate_nobles
+			}
+			add_estate_loyalty = {
+				estate = estate_nobles
+				loyalty = 15
+			}
+		}
+		if = {
+			limit = {
+				has_dlc = "The Cossacks"
+				has_estate = estate_burghers
+			}
+			add_estate_loyalty = {
+				estate = estate_burghers
+				loyalty = -10
+			}
+		}	
+		add_republican_tradition = -10
+		change_statists_vs_orangists = 0.25
+		random_neighbor_country = { 
+			limit = {
+				government = monarchy
+				has_regency = no
+				NOT = {
+					is_rival = ROOT
+				}
+				religion = ROOT
+			}
+			ROOT = { 
+				define_ruler = { 
+					dynasty = PREV 
+					age = 35
+					culture = PREV
+					hide_skills = yes
+				} 
+			}
+			add_opinion = { who = ROOT modifier = opinion_dutch_republic_noble }
+		}
+		define_consort = { male = yes }
+		set_consort_flag = dutch_republic_regent_set
+		set_consort_flag = dutch_republic_has_orangist
+		clr_country_flag = dutch_republic_succession_in_progress
+		clr_country_flag = dutch_republic_illegitimate
+	}
+	# Successful Merchant
+	option = {
+		name = dutch_republic.2909.e
+		if = {
+			limit = { 
+				has_heir = yes  
+			}
+			spawn_rebels = {
+				type = pretender_rebels
+				size = 1
+				use_heir_as_leader = yes
+			}
+		}
+		if = {
+			limit = {
+				has_dlc = "The Cossacks"
+				has_estate = estate_burghers
+			}
+			add_estate_loyalty = {
+				estate = estate_burghers
+				loyalty = 20
+			}
+		}
+		if = {
+			limit = {
+				has_dlc = "The Cossacks"
+				has_estate = estate_nobles
+			}
+			add_estate_loyalty = {
+				estate = estate_nobles
+				loyalty = -15
+			}
+		}
+		if = {
+			limit = {
+				has_saved_event_target = burgher_province
+			}
+			define_ruler = {
+				age = 35
+				hide_skills = yes
+				culture = event_target:burgher_province
+			}
+		}
+		else = {
+			define_ruler = {
+				age = 35
+				hide_skills = yes
+			}
+		}
+		add_republican_tradition = 10
+		change_statists_vs_orangists = -0.2
+		add_years_of_income = 0.35
+		define_consort = { male = yes }
+		set_consort_flag = dutch_republic_regent_set
+		set_consort_flag = dutch_republic_has_statist
+		clr_country_flag = dutch_republic_succession_in_progress
+		clr_country_flag = dutch_republic_illegitimate
+	}
+	# Ask a General
+	option = {
+		name = dutch_republic.2909.f
+		if = {
+			limit = { has_heir = yes  }
+			spawn_rebels = {
+				type = pretender_rebels
+				size = 1
+				use_heir_as_leader = yes
+			}
+		}
+		if = {
+			limit = {
+				NOT = { num_of_generals = 2 }
+			}
+			create_general = 40
+		}
+		hidden_effect = {
+			define_leader_to_ruler = {
+				type = general
+			}
+		}
+		add_army_tradition = 15
+		add_republican_tradition = 10
+		custom_tooltip = dutch_republic.2909.ft
+		define_consort = { male = yes }
+		set_consort_flag = dutch_republic_regent_set
+		set_consort_flag = dutch_republic_has_orangist
+		clr_country_flag = dutch_republic_succession_in_progress
+		clr_country_flag = dutch_republic_illegitimate
+	}
+	# Ask an Admiral
+	option = {
+		name = dutch_republic.2909.g
+		if = {
+			limit = { has_heir = yes  }
+			spawn_rebels = {
+				type = pretender_rebels
+				size = 1
+				use_heir_as_leader = yes
+			}
+		}
+		if = {
+			limit = {
+				NOT = { num_of_admirals = 2 }
+			}
+			create_admiral = 40
+		}
+		hidden_effect = {
+			define_leader_to_ruler = {
+				type = admiral
+			}
+		}
+		add_navy_tradition = 15
+		add_republican_tradition = 10
+		custom_tooltip = dutch_republic.2909.gt
+		define_consort = { male = yes }
+		set_consort_flag = dutch_republic_regent_set
+		set_consort_flag = dutch_republic_has_statist
+		clr_country_flag = dutch_republic_succession_in_progress
+		clr_country_flag = dutch_republic_illegitimate
+	}
+	# Influential Statist
+	option = {
+		name = dutch_republic.2909.h
+		if = {
+			limit = { has_heir = yes  }
+			spawn_rebels = {
+				type = pretender_rebels
+				size = 1
+				use_heir_as_leader = yes
+			}
+		}
+		add_republican_tradition = 10
+		change_statists_vs_orangists = -0.5
+		define_ruler = {
+			age = 35
+			hide_skills = yes
+		}
+		define_consort = { male = yes }
+		set_consort_flag = dutch_republic_regent_set
+		set_consort_flag = dutch_republic_has_statist
+		clr_country_flag = dutch_republic_succession_in_progress
+		clr_country_flag = dutch_republic_illegitimate
+	}
+	# Influential Orangist
+	option = {
+		name = dutch_republic.2909.i
+		if = {
+			limit = { has_heir = yes  }
+			spawn_rebels = {
+				type = pretender_rebels
+				size = 1
+				use_heir_as_leader = yes
+			}
+		}
+		clr_country_flag = dutch_republic_succession_in_progress
+		add_republican_tradition = 10
+		change_statists_vs_orangists = 0.5
+		define_ruler = {
+			age = 35
+			hide_skills = yes
+		}
+		define_consort = { male = yes }
+		set_consort_flag = dutch_republic_regent_set
+		set_consort_flag = dutch_republic_has_orangist
+		clr_country_flag = dutch_republic_succession_in_progress
+		clr_country_flag = dutch_republic_illegitimate
+	}
+}
+
+# Illegitimate succession
+country_event = {
+	id = dutch_republic.2910
+	title = dutch_republic.2908.t
+	desc = dutch_republic.2910.d
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		government = dutch_republic
+		has_consort_regency = no
+		has_regency_regency = no
+		has_country_flag = dutch_republic_illegitimate
+	}
+	
+	immediate = {
+		while = {
+			limit = { has_consort = yes  }
+			remove_consort = yes
+		}
+	}
+	
+	option = {
+		name = dutch_republic.2908.a
+		define_consort = { male = yes }
+	}
+}
+
+## Stadtholderless Era Start - Heir too young
+#country_event = {
+#	id = dutch_republic.2909
+#	title = dutch_republic.2909.t
+#	desc = dutch_republic.2909.d
+#	picture = DEBATE_REPUBLICAN_eventPicture
+#	
+#	is_triggered_only = yes
+#	
+#	trigger = {
+#		government = dutch_republic
+#	}
+#	
+#	option = {
+#		name = dutch_republic.2908.a
+#		change_statists_vs_orangists = -0.25
+#		set_country_flag = stadtholderless_period
+#		clr_country_flag = dutch_republic_succession_in_progress
+#	}
+#}
+#
+## Stadtholderless Era Start - No Heir
+#country_event = {
+#	id = dutch_republic.2909
+#	title = dutch_republic.2908.t
+#	desc = dutch_republic.2909.d
+#	picture = DEBATE_REPUBLICAN_eventPicture
+#	
+#	is_triggered_only = yes
+#	
+#	trigger = {
+#		government = dutch_republic
+#	}
+#	
+#	option = {
+#		name = dutch_republic.2908.a
+#		change_statists_vs_orangists = -0.50
+#		set_country_flag = stadtholderless_period
+#		clr_country_flag = dutch_republic_succession_in_progress
+#	}
+#}
+#
+## Stadtholderless Era Normal Succession - Heir too young
+#country_event = {
+#	id = dutch_republic.2910
+#	title = dutch_republic.2910.t
+#	desc = dutch_republic.2910.d
+#	picture = ELECTION_REPUBLICAN_eventPicture
+#	
+#	is_triggered_only = yes
+#	
+#	trigger = {
+#		government = dutch_republic
+#	}
+#	
+#	
+#	option = {
+#		name = dutch_republic.2910.a
+#		change_statists_vs_orangists = -0.33
+#		hidden_effect = {
+#			define_ruler = {
+#			}
+#		}
+#		define_consort = {
+#			adm = 3
+#			male = yes
+#		}
+#		hidden_effect = {
+#			exile_ruler_as = dutch_republic_gone
+#			set_country_flag = stadtholderless_period
+#		}
+#		tooltip = {
+#			add_stability = -1
+#		}
+#		custom_tooltip = dutch_republic.2910.ae
+#		clr_country_flag = dutch_republic_succession_in_progress
+#	}
+#	option = {
+#		name = dutch_republic.2910.b
+#		change_statists_vs_orangists = 0.33
+#		hidden_effect = {
+#			define_ruler = {
+#			}
+#		}
+#		define_consort = {
+#			mil = 3
+#			male = yes
+#		}
+#		hidden_effect = {
+#			exile_ruler_as = dutch_republic_gone
+#			set_country_flag = stadtholderless_period
+#		}
+#		tooltip = {
+#			add_stability = -1
+#		}
+#		custom_tooltip = dutch_republic.2910.be
+#		clr_country_flag = dutch_republic_succession_in_progress
+#	}
+#}
+#
+#
+## Stadtholderless Era Normal Succession - No Heir
+#country_event = {
+#	id = dutch_republic.2911
+#	title = dutch_republic.2910.t
+#	desc = dutch_republic.2911.d
+#	picture = ELECTION_REPUBLICAN_eventPicture
+#	
+#	is_triggered_only = yes
+#	
+#	trigger = {
+#		government = dutch_republic
+#	}
+#	
+#	option = {
+#		name = dutch_republic.2911
+#	}
+#}
+#
+## Dutch Republic Elections (Hidden)
+#country_event = {
+#	id = dutch_republic.2912
+#	
+#	is_triggered_only = yes
+#	
+#	trigger = {
+#		government = dutch_republic
+#	}
+#	option = {
+#	}
+#}
+#
+## Dutch Republic Elections (Normal)
+#country_event = {
+#	id = dutch_republic.2913
+#	title = dutch_republic.2913.t
+#	desc = dutch_republic.2913.d
+#	picture = ELECTION_REPUBLICAN_eventPicture
+#	
+#	is_triggered_only = yes
+#	
+#	trigger = {
+#		government = dutch_republic
+#	}
+#	option = {
+#	}
+#}
+#
+## Dutch Republic Elections (Death of Consort)
+#country_event = {
+#	id = dutch_republic.2914
+#	title = dutch_republic.2913.t
+#	desc = dutch_republic.2913.d
+#	picture = ELECTION_REPUBLICAN_eventPicture
+#	
+#	is_triggered_only = yes
+#	
+#	trigger = {
+#		government = dutch_republic
+#	}
+#	option = {
+#	}
+#}
+
+# Set Legitimate Heir Flag
+country_event = {
+	id = dutch_republic.2915
+	title = dutch_republic.2915.t
+	
+	is_triggered_only = yes
+	#TODO Make hidden
+	#hidden = yes
+	
+	trigger = {
+		government = dutch_republic
+		NOT = { has_country_flag = dutch_republic_illegitimate }
+	}
+	
+	immediate = {
+		set_heir_flag = dutch_republic_awaiting_succession
+	}
+	option = {
+	}
+}

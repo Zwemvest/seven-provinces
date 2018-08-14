@@ -94,11 +94,9 @@ country_event = {
 	option = {
 		name = "EVTOPTB700"	# An administrator type
 		ai_chance = { factor = 20 }
-		define_ruler = {
-			mil = 1
-			adm = 4
-			dip = 1					
-			fixed = yes
+		define_ruler = {	
+			dip = -3
+			mil = -3
 		}
 		if = {
 			limit = { 
@@ -114,11 +112,9 @@ country_event = {
 	option = {
 		name = "EVTOPTC700"	# A diplomat
 		ai_chance = { factor = 20 }
-		define_ruler = {
-			dip = 4
-			adm = 1
-			mil = 1					
-			fixed = yes
+		define_ruler = {	
+			adm = -3
+			mil = -3
 		}
 		if = {
 			limit = { 
@@ -129,16 +125,14 @@ country_event = {
 				influence = 20
 			}				
 		}
-		add_karma = 10		
+		add_karma = 10	
 	}
 	option = {
 		name = "EVTOPTD700"	# A military man
 		ai_chance = { factor = 20 }
-		define_ruler = {
-			mil = 4
-			adm = 1
-			dip = 1					
-			fixed = yes
+		define_ruler = {	
+			adm = -3
+			dip = -3
 		}
 		if = {
 			limit = { 
@@ -151,6 +145,64 @@ country_event = {
 		}
 		add_karma = 10
 	}
+	option = {
+     name = "elections.700.e"   # We need a Medici to rule us
+     trigger = { 
+		OR = {
+			tag = LAN
+			tag = TUS
+			AND = {
+				tag = ITA
+				primary_culture = "tuscan"
+			}
+		}		
+		has_dlc = "Res Publica"
+	}
+     ai_chance = { factor = 50 }
+	 add_scaled_republican_tradition = -20
+     define_ruler = {
+       mil = -1
+       adm = -1
+       dip = -1         
+	   dynasty = "de' Medici" 
+     }
+     if = {
+       limit = {
+         has_faction = mr_aristocrats
+       }
+       add_faction_influence = {
+         faction = mr_aristocrats
+         influence = 10
+       }       
+     }
+     if = {
+       limit = {
+         has_faction = mr_guilds
+       }
+       add_faction_influence = {
+         faction = mr_guilds
+         influence = 10
+       }       
+     }
+	 if = {
+			limit = { 
+				is_tribal = yes
+				government = republic
+				NOT = { republican_tradition = 20 }	
+			}	
+			change_government = tribal_despotism
+		}
+		if = {
+			limit = {
+				is_tribal = no 
+				government = republic
+				NOT = { republican_tradition = 20 }				
+				has_dlc = "Res Publica"
+			}
+			change_government = republican_dictatorship	
+		}
+	 add_stability = -1
+	} 	 
 }
 
 # Election!
@@ -168,12 +220,10 @@ country_event = {
 	
 	option = {
 		name = "EVTOPTB700"	# An administrator type
-		ai_chance = { factor = 40 }
-		define_ruler = {
-			mil = 1
-			adm = 4
-			dip = 1					
-			fixed = yes
+		ai_chance = { factor = 20 }
+		define_ruler = {	
+			dip = -3
+			mil = -3
 		}
 		if = {
 			limit = { 
@@ -184,15 +234,14 @@ country_event = {
 				influence = 20
 			}				
 		}
+		add_karma = 10
 	}
 	option = {
 		name = "EVTOPTC700"	# A diplomat
-		ai_chance = { factor = 30 }
-		define_ruler = {
-			dip = 4
-			adm = 1
-			mil = 1					
-			fixed = yes
+		ai_chance = { factor = 20 }
+		define_ruler = {	
+			adm = -3
+			mil = -3
 		}
 		if = {
 			limit = { 
@@ -202,16 +251,15 @@ country_event = {
 				faction = mr_traders
 				influence = 20
 			}				
-		}			
+		}
+		add_karma = 10	
 	}
 	option = {
 		name = "EVTOPTD700"	# A military man
-		ai_chance = { factor = 30 }
-		define_ruler = {
-			mil = 4
-			adm = 1
-			dip = 1					
-			fixed = yes
+		ai_chance = { factor = 20 }
+		define_ruler = {	
+			adm = -3
+			dip = -3
 		}
 		if = {
 			limit = { 
@@ -221,8 +269,67 @@ country_event = {
 				faction = mr_aristocrats
 				influence = 20
 			}				
-		}		
+		}
+		add_karma = 10
 	}
+	option = {
+     name = "elections.700.e"   # We need a Medici to rule us
+     trigger = { 
+		OR = {
+			tag = LAN
+			tag = TUS
+			AND = {
+				tag = ITA
+				primary_culture = "tuscan"
+			}
+		}		
+		has_dlc = "Res Publica"
+	}
+     ai_chance = { factor = 50 }
+	 add_scaled_republican_tradition = -20
+     define_ruler = {
+       mil = -1
+       adm = -1
+       dip = -1         
+	   dynasty = "de' Medici" 
+     }
+     if = {
+       limit = {
+         has_faction = mr_aristocrats
+       }
+       add_faction_influence = {
+         faction = mr_aristocrats
+         influence = 10
+       }       
+     }
+     if = {
+       limit = {
+         has_faction = mr_guilds
+       }
+       add_faction_influence = {
+         faction = mr_guilds
+         influence = 10
+       }       
+     }
+	 if = {
+			limit = { 
+				is_tribal = yes
+				government = republic
+				NOT = { republican_tradition = 20 }	
+			}	
+			change_government = tribal_despotism
+		}
+		if = {
+			limit = {
+				is_tribal = no 
+				government = republic
+				NOT = { republican_tradition = 20 }				
+				has_dlc = "Res Publica"
+			}
+			change_government = republican_dictatorship	
+		}
+	 add_stability = -1
+	} 	 
 }
 
 ########################################
@@ -347,6 +454,7 @@ country_event = {
 	}
 	option = {
 		name = elections.720.c
+		change_consort_regent_to_ruler = yes
 		change_statists_vs_orangists = 0.33
 	}
 }
@@ -378,6 +486,7 @@ country_event = {
 	}
 	option = {
 		name = elections.720.c
+		change_consort_regent_to_ruler = yes
 		change_statists_vs_orangists = 0.33
 	}
 }
