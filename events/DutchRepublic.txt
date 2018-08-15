@@ -26,10 +26,21 @@ country_event = {
 					has_regency_regency = no
 					has_ruler_flag = dutch_republic_awaiting_succession
 					NOT = { has_country_flag = dutch_republic_illegitimate }
-					NOT = { has_country_flag = dutch_republic_succession_in_progress }
 				}
 				country_event = { 
 					id = dutch_republic.2907
+				}
+			}
+			
+			# Illegitimate succession
+			if = {
+				limit = {
+					has_consort_regency = no
+					has_regency_regency = no
+					has_country_flag = dutch_republic_illegitimate
+				}
+				country_event = { 
+					id = dutch_republic.2910
 				}
 			}
 			
@@ -40,23 +51,9 @@ country_event = {
 					has_regency_regency = no
 					NOT = {  has_ruler_flag = dutch_republic_awaiting_succession }
 					NOT = { has_country_flag = dutch_republic_illegitimate }
-					NOT = { has_country_flag = dutch_republic_succession_in_progress }
 				}
 				country_event = { 
 					id = dutch_republic.2908
-				}
-			}
-			
-			# Illegitimate succession
-			if = {
-				limit = {
-					has_consort_regency = no
-					has_regency_regency = no
-					has_country_flag = dutch_republic_illegitimate
-					NOT = { has_country_flag = dutch_republic_succession_in_progress }
-				}
-				country_event = { 
-					id = dutch_republic.2910
 				}
 			}
 			
