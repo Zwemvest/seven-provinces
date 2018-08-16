@@ -3301,11 +3301,11 @@ dutch_republic = {
 	}
 
 	ruler_male = {
-		2 = STADTHOLDER
+		2 = DUTCH_REPUBLIC_RULER
 	}
 
 	ruler_female = {
-		2 = STADTHOLDERESS
+		2 = DUTCH_REPUBLIC_RULER_FEM
 	}
 	consort_male = {
 		2 = RAADPENSIONARIS

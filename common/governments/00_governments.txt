@@ -1335,7 +1335,7 @@ ambrosian_republic = {
 # Special for the Dutch
 dutch_republic = {
 	republic = yes
-	monarchy = yes
+	#monarchy = yes
 
 	color = { 220 120 20 }
 	
@@ -1343,7 +1343,7 @@ dutch_republic = {
 	
 	valid_for_new_country = no
 	allow_convert = no
-	#duration = 4
+	duration = 400
 	
 	republican_name = no
 	royal_marriage = yes

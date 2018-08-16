@@ -338,7 +338,7 @@ on_abandon_colony = {
 on_new_monarch = {
 	crimean_succession_effect = yes #Scripted effect
 	slesvig_question_effect = yes #Scripted effect
-	dutch_republic.2906		# Dutch Republic Succession
+	#dutch_republic.2906		# Dutch Republic Succession
 	if = {
 		limit = {
 			has_consort_regency = no
@@ -434,7 +434,7 @@ on_monarch_death = {
 	}
 	events = {
 		flavor_tus.16 #Savanorola Leaves This World
-		dutch_republic.2906		# Dutch Republic Succession
+		#dutch_republic.2906		# Dutch Republic Succession
 	}
 }
 
@@ -488,7 +488,7 @@ on_new_term_election = {
 on_death_election = {
 	events = {
 		701		# Election event
-		#dutch_republic.2906		# Dutch Republic
+		dutch_republic.2906		# Dutch Republic
 	}
 }
 

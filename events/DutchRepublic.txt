@@ -40,7 +40,7 @@ country_event = {
 					has_country_flag = dutch_republic_illegitimate
 				}
 				country_event = { 
-					id = dutch_republic.2910
+					id = dutch_republic.2908
 				}
 			}
 			
@@ -53,11 +53,25 @@ country_event = {
 					NOT = { has_country_flag = dutch_republic_illegitimate }
 				}
 				country_event = { 
-					id = dutch_republic.2908
+					id = dutch_republic.2909
 				}
 			}
 			
-			## There is an heir, but not old enough. Trigger a Stadtholderless era.
+			# There is a new ruler, but not old enough. Check for a Stadtholderless era.
+			if = {
+				limit = {
+					NOT = {
+						ruler_age = 15
+					}
+					NOT = { 
+						has_country_flag = stadtholderless_period
+					}
+				}
+				country_event = { 
+					id = dutch_republic.2911
+				}
+			}
+			## There is an heir, but not old enough. Check for a Stadtholderless era.
 			#if = {
 			#	limit = {
 			#		has_heir = yes
@@ -638,6 +652,46 @@ country_event = {
 	option = {
 		name = dutch_republic.2908.a
 		define_consort = { male = yes }
+	}
+}
+
+# Stadtholderless Era Start - Heir too young
+country_event = {
+	id = dutch_republic.2911
+	title = dutch_republic.2911.t
+	desc = dutch_republic.2911.d
+	picture = DEBATE_REPUBLICAN_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		government = dutch_republic
+	}
+	
+	option = {
+		limit = {
+			is_statists_in_power = no
+		}
+		name = dutch_republic.2911.a
+		define_ruler = {
+			hide_skills = yes
+			male = yes
+			regency = yes
+		}
+		exile_ruler_as = dutch_republic_exiled_too_young
+		set_heir = dutch_republic_exiled_too_young
+		clr_country_flag = dutch_republic_succession_in_progress
+	}
+	option = {
+		limit = {
+			is_statists_in_power = yes
+		}
+		name = dutch_republic.2911.b
+		define_ruler = {
+			
+		}
+		set_country_flag = stadtholderless_period
+		clr_country_flag = dutch_republic_succession_in_progress
 	}
 }
 
