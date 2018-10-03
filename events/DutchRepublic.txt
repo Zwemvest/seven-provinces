@@ -6,7 +6,7 @@ country_event = {
 	title = dutch_republic.2906.t
 	
 	is_triggered_only = yes
-	#TODO Make hidden
+	#TODO Remove is_hidden
 	#hidden = yes
 	
 	trigger = {
@@ -26,36 +26,39 @@ country_event = {
 					has_regency_regency = no
 					has_ruler_flag = dutch_republic_awaiting_succession
 					NOT = { has_country_flag = dutch_republic_illegitimate }
+					has_country_flag = dutch_republic_succession_in_progress
 				}
 				country_event = { 
 					id = dutch_republic.2907
 				}
 			}
 			
-			# Illegitimate succession
-			if = {
-				limit = {
-					has_consort_regency = no
-					has_regency_regency = no
-					has_country_flag = dutch_republic_illegitimate
-				}
-				country_event = { 
-					id = dutch_republic.2908
-				}
-			}
-			
-			# Panic succession, no Stadtholder or heir to the Stadtholder
-			if = {
-				limit = {
-					has_consort_regency = no
-					has_regency_regency = no
-					NOT = {  has_ruler_flag = dutch_republic_awaiting_succession }
-					NOT = { has_country_flag = dutch_republic_illegitimate }
-				}
-				country_event = { 
-					id = dutch_republic.2909
-				}
-			}
+			## Illegitimate succession
+			#if = {
+			#	limit = {
+			#		has_consort_regency = no
+			#		has_regency_regency = no
+			#		has_country_flag = dutch_republic_illegitimate
+					has_country_flag = dutch_republic_succession_in_progress
+			#	}
+			#	country_event = { 
+			#		id = dutch_republic.2908
+			#	}
+			#}
+			#
+			## Panic succession, no Stadtholder or heir to the Stadtholder
+			#if = {
+			#	limit = {
+			#		has_consort_regency = no
+			#		has_regency_regency = no
+			#		NOT = {  has_ruler_flag = dutch_republic_awaiting_succession }
+			#		NOT = { has_country_flag = dutch_republic_illegitimate }
+					has_country_flag = dutch_republic_succession_in_progress
+			#	}
+			#	country_event = { 
+			#		id = dutch_republic.2909
+			#	}
+			#}
 			
 			# There is a new ruler, but not old enough. Check for a Stadtholderless era.
 			if = {
@@ -66,27 +69,13 @@ country_event = {
 					NOT = { 
 						has_country_flag = stadtholderless_period
 					}
+					has_country_flag = dutch_republic_succession_in_progress
 				}
 				country_event = { 
 					id = dutch_republic.2911
 				}
 			}
-			## There is an heir, but not old enough. Check for a Stadtholderless era.
-			#if = {
-			#	limit = {
-			#		has_heir = yes
-			#		NOT = {
-			#			heir_age = 15
-			#		}
-			#		has_consort_regency = yes
-			#		NOT = { 
-			#			has_country_flag = stadtholderless_period
-			#		}
-			#	}
-			#	country_event = { 
-			#		id = dutch_republic.2908
-			#	}
-			#}
+			
 			## No heir. Trigger a Stadtholderless era.
 			#if = {
 			#	limit = {
@@ -655,7 +644,7 @@ country_event = {
 	}
 }
 
-# Stadtholderless Era Start - Heir too young
+# Stadtholderless Era Check - Heir too young
 country_event = {
 	id = dutch_republic.2911
 	title = dutch_republic.2911.t
@@ -663,37 +652,102 @@ country_event = {
 	picture = DEBATE_REPUBLICAN_eventPicture
 	
 	is_triggered_only = yes
+	hidden = yes
+	
+	trigger = {
+		government = dutch_republic
+		NOT = { ruler_age = 15 }
+		NOT = { has_country_flag = stadtholderless_period }
+		has_country_flag = dutch_republic_succession_in_progress
+	}
+	immediate = {
+		if = {
+			limit = {
+				is_statists_in_power = no
+			}
+			country_event = { 
+				id = dutch_republic.2912
+			}
+		}
+		else = {
+			country_event = { 
+				id = dutch_republic.2913
+			}
+		}
+	}
+	option = {
+	}
+}
+
+# Stadtholderless Era Avoided - Orangists in power
+country_event = {
+	id = dutch_republic.2912
+	title = dutch_republic.2912.t
+	desc = dutch_republic.2912.d
+	picture = DEBATE_REPUBLICAN_eventPicture
+	
+	is_triggered_only = yes
 	
 	trigger = {
 		government = dutch_republic
 	}
-	
 	option = {
 		limit = {
 			is_statists_in_power = no
 		}
 		name = dutch_republic.2911.a
 		define_ruler = {
-			hide_skills = yes
-			male = yes
-			regency = yes
+			dynasty = ROOT
 		}
-		exile_ruler_as = dutch_republic_exiled_too_young
-		set_heir = dutch_republic_exiled_too_young
 		clr_country_flag = dutch_republic_succession_in_progress
 	}
 	option = {
 		limit = {
 			is_statists_in_power = yes
 		}
-		name = dutch_republic.2911.b
+		name = dutch_republic.2912.b
 		define_ruler = {
-			
 		}
 		set_country_flag = stadtholderless_period
 		clr_country_flag = dutch_republic_succession_in_progress
 	}
 }
+
+# Stadtholderless Era Avoided - Orangists in power
+country_event = {
+	id = dutch_republic.2913
+	title = dutch_republic.2913.t
+	desc = dutch_republic.2913.d
+	picture = DEBATE_REPUBLICAN_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		government = dutch_republic
+	}
+	option = {
+		limit = {
+			is_statists_in_power = no
+		}
+		name = dutch_republic.2911.a
+		define_ruler = {
+			dynasty = ROOT
+		}
+		clr_country_flag = dutch_republic_succession_in_progress
+	}
+	option = {
+		limit = {
+			is_statists_in_power = yes
+		}
+		name = dutch_republic.2913.b
+		define_ruler = {
+		}
+		set_country_flag = stadtholderless_period
+		clr_country_flag = dutch_republic_succession_in_progress
+	}
+}
+
+
 
 ## Stadtholderless Era Start - Heir too young
 #country_event = {

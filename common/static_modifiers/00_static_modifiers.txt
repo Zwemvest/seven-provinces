@@ -627,7 +627,7 @@ peace = {
 	global_autonomy = -0.1
 	global_institution_spread = 0.1
 	rr_girondists_influence = -0.1
-	monthly_militarized_society = 0.25
+	monthly_militarized_society = 0.15
 }
 
 unconditional_surrender = {
@@ -847,14 +847,14 @@ recovery_motivation = {
 
 militarized_society = {
 	trade_efficiency = 0.2
-	global_trade_power = 0.1
+	global_trade_power = 0.2
 	naval_maintenance_modifier = -0.2
 	development_cost = -0.2
-	global_trade_goods_size_modifier = 0.1	
+	global_trade_goods_size_modifier = 0.25	
 	technology_cost = -0.1
 	idea_cost = -0.1
 	defensiveness = 0.25	
-	monthly_militarized_society = -1
+	monthly_militarized_society = -0.5
 }
 
 
@@ -922,7 +922,7 @@ no_debate_in_parliament = {
 republican_tradition = {
 	global_unrest = -2
 	rr_jacobins_influence = 0.1
-	monthly_militarized_society = 0.25
+	monthly_militarized_society = 0.10
 }
 
 inverse_republican_tradition = {
