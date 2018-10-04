@@ -109,7 +109,6 @@ port = {
 
 in_state = {
 	local_institution_spread = 0.10
-	monthly_militarized_society = -0.02
 }
 
 in_capital_state = {
@@ -197,13 +196,37 @@ severe_winter = {
 	picture = "winter_severe"
 }
 
+mild_monsoon = {
+	local_hostile_attrition = 1
+	local_hostile_movement_speed = -0.20
+	local_friendly_movement_speed = -0.20
+
+	picture = "monsoon_mild"
+}
+
+normal_monsoon = {
+	local_hostile_attrition = 2
+	local_hostile_movement_speed = -0.25
+	local_friendly_movement_speed = -0.25
+
+	picture = "monsoon_normal"
+}
+
+severe_monsoon = {
+	local_hostile_attrition = 3
+	local_hostile_movement_speed = -0.50
+	local_friendly_movement_speed = -0.50
+
+	picture = "monsoon_severe"
+}
+
 blockaded = {
 	regiment_recruit_speed = 0.2
 	ship_recruit_speed = 0.2
 	trade_goods_size_modifier = -0.5
 	province_trade_power_modifier = -0.75
 	local_monthly_devastation = 0.1
-	monthly_militarized_society = -0.025
+
 }
 
 no_adjacent_controlled = {
@@ -302,6 +325,18 @@ core = {
 }
 
 non_core = {
+	local_missionary_strength = -0.02
+}
+
+territory_core = {
+	local_tax_modifier = 0.75				#90% more in a core
+	local_manpower_modifier = 0.75			#75% more in a core
+	local_sailors_modifier = 0.75
+	local_missionary_strength = -0.02
+}
+
+territory_non_core = {
+	local_missionary_strength = -0.02
 }
 
 march_bonus = {
@@ -311,6 +346,8 @@ march_bonus = {
 	defensiveness = 0.2
 	fort_maintenance_modifier = -0.20
 	manpower_recovery_speed = 0.20
+	land_maintenance_modifier = -0.20
+	naval_maintenance_modifier = -0.20
 }
 
 same_culture_group = {
@@ -374,7 +411,6 @@ prosperity = {
 	local_development_cost = -0.1
 	trade_goods_size_modifier = 0.25
 	local_autonomy = -0.05
-	monthly_militarized_society = 0.01
 }
 
 slaves_raided = {
@@ -397,7 +433,6 @@ intolerance = {
 unrest = {
 	regiment_recruit_speed = 0.1			#10% longer time to build troops for each rr
 	ship_recruit_speed = 0.1
-	monthly_militarized_society = -0.01
 }
 
 nationalism = {
@@ -435,7 +470,6 @@ friendly_regiments = {
 active_missionary = {
 	local_unrest = 6					# 6% revolt risk!
 	local_institution_spread = -0.10
-	monthly_militarized_society = -0.5
 }
 
 # Core province of the owner's culture group, while fighting a defensive war
@@ -496,7 +530,7 @@ base_values = {
 	horde_unity = -2
 	devotion = -0.5
 	meritocracy = -2
-	max_states = 5
+	max_states = 10
 	num_accepted_cultures = 2
 	monthly_splendor = 1
 	artillery_bonus_vs_fort = 5
@@ -536,7 +570,6 @@ positive_stability = {
 	yearly_corruption = -0.02
 	global_institution_spread = 0.05
 	yearly_harmony = 0.25
-	monthly_militarized_society = 0.05
 }
 
 negative_stability = {
@@ -546,7 +579,7 @@ negative_stability = {
 	migration_cooldown = 0.1
 	devotion = 1
 	caravan_power = 0.05
-	monthly_militarized_society = 0.1
+	monthly_militarized_society = -0.05
 }
 
 positive_mandate = {	# 100% strength at 100 mandate, 0% at 50 mandate
@@ -627,7 +660,6 @@ peace = {
 	global_autonomy = -0.1
 	global_institution_spread = 0.1
 	rr_girondists_influence = -0.1
-	monthly_militarized_society = 0.15
 }
 
 unconditional_surrender = {
@@ -653,7 +685,6 @@ war_exhaustion = {
 	sailors_recovery_speed = -0.01
 	siege_ability = -0.01
 	global_trade_goods_size_modifier = -0.02
-	monthly_militarized_society = -0.01
 }
 
 doom = {
@@ -695,6 +726,7 @@ army_tradition = {
 	temples_influence = 0.1
 	mr_aristocrats_influence = 0.1
 	rr_girondists_influence = 0.1
+	monthly_militarized_society = 0.1
 }
 
 navy_tradition = {
@@ -706,7 +738,6 @@ navy_tradition = {
 	mr_traders_influence = 0.1
 	blockade_efficiency = 1
 	sailors_recovery_speed = 0.2
-	monthly_militarized_society = 0.1
 }
 
 positive_piety = { #As of 1.23 Legalism
@@ -775,7 +806,7 @@ num_of_marriages = {
 }
 
 num_of_provinces = {
-	#monthly_militarized_society = -0.015
+	monthly_militarized_society = -0.015
 
 }
 
@@ -798,6 +829,7 @@ legitimacy = {
 	tolerance_heretic = 2
 	diplomatic_reputation = 2
 	vassal_income = 0.1
+	monthly_militarized_society = 0.05
 	max_absolutism = 20
 }
 
@@ -846,15 +878,11 @@ recovery_motivation = {
 }
 
 militarized_society = {
-	trade_efficiency = 0.2
-	global_trade_power = 0.2
-	naval_maintenance_modifier = -0.2
-	development_cost = -0.2
-	global_trade_goods_size_modifier = 0.25	
-	technology_cost = -0.1
-	idea_cost = -0.1
-	defensiveness = 0.25	
-	monthly_militarized_society = -0.5
+
+	discipline = 0.10
+	manpower_recovery_speed = 0.20
+	land_maintenance_modifier = -0.20
+
 }
 
 
@@ -900,6 +928,30 @@ over_extension = {
 	yearly_corruption = 0.5
 }
 
+territory_very_easy_difficulty = { # Penalties for territories on very easy difficulty
+
+}
+
+territory_easy_difficulty = { # Penalties for territories on easy difficulty
+	yearly_corruption = 0.01
+}
+
+territory_normal_difficulty = { # Penalties for territories on normal difficulty
+	yearly_corruption = 0.02
+}
+
+territory_hard_difficulty = { # Penalties for territories on hard difficulty
+	yearly_corruption = 0.02
+}
+
+territory_very_hard_difficulty = { # Penalties for territories on very hard difficulty
+	yearly_corruption = 0.02
+}
+
+territory_ai_difficulty = { #Penalties for territories owned by AI regardless of difficulty.
+	yearly_corruption = 0.02
+}
+
 prestige = {
 	global_trade_power = 0.15			#+15/-15 total bonus from prestige.
 	land_morale = 0.1
@@ -922,7 +974,6 @@ no_debate_in_parliament = {
 republican_tradition = {
 	global_unrest = -2
 	rr_jacobins_influence = 0.1
-	monthly_militarized_society = 0.10
 }
 
 inverse_republican_tradition = {
@@ -953,7 +1004,6 @@ inverse_religious_unity = {
 	church_power_modifier = -1
 	devotion = -1
 	yearly_corruption = 0.1
-	monthly_militarized_society = -0.5
 }
 
 total_occupation = {
@@ -1031,7 +1081,6 @@ absolutism = {
 	administrative_efficiency = 0.4
 	discipline = 0.05
 	core_decay_on_your_own = -0.5
-	monthly_militarized_society = -0.025
 }
 
 low_army_professionalism = {
@@ -1067,7 +1116,6 @@ power_projection_25 = {
 
 trade_company_strong = {
 	merchants = 1
-	monthly_militarized_society = 0.05
 }
 
 trade_company_dominant = {
@@ -1076,14 +1124,13 @@ trade_company_dominant = {
 
 large_colonial_nation = {
 	merchants = 1
-	monthly_militarized_society = 0.05
 	global_trade_power = 0.05
 	naval_forcelimit = 10
 	land_forcelimit = 5
 }
 
 march_subject = {
-	land_forcelimit = 2
+	land_forcelimit = 1
 }
 
 vassal_subject = {
@@ -1125,15 +1172,9 @@ gov_rank_1 = {
 }
 
 gov_rank_2 = {
-	diplomats = 1
-	max_states = 5
 }
 
 gov_rank_3 = {
-	diplomats = 1
-	free_leader_pool = 1
-	max_states = 10
-	max_absolutism = 5
 }
 
 # for mod support...
@@ -1234,24 +1275,6 @@ tutorial_colonial_range = {
 	range = 0.1
 }
 
-
-########################################
-# For Dutch Mechanics
-########################################
-
-statists = {
-	naval_forcelimit_modifier = 0.10
-	global_trade_power = 0.05
-	republican_tradition = 1
-
-}
-
-orangists = {
-	land_forcelimit_modifier = 0.25
-	stability_cost_modifier = -0.10
-	republican_tradition = -1
-}
-
 ########################################
 # Nation Designer
 ########################################
@@ -1310,7 +1333,7 @@ karma_too_low =
 ########################################
 
 invasion_nation = {
-	discipline = 0.5
+	discipline = 0.25
 	manpower_recovery_speed = 1
 	sailors_recovery_speed = 1
 	global_tax_income = 600
@@ -1321,6 +1344,7 @@ invasion_nation = {
 	core_creation = -0.75
 	global_unrest = -10
 	land_attrition = -0.5
+	yearly_corruption = -1
 }
 
 
@@ -1539,4 +1563,23 @@ innovativeness = {
 	all_power_cost	= -0.1
 	army_tradition_decay = -0.01
 	navy_tradition_decay = -0.01
+}
+
+rajput_regiment = {
+	drill_decay_modifier = -0.25
+	reinforce_cost_modifier = -0.5
+	land_morale = 0.05
+}
+
+raiding_parties_modifier = {
+	hostile_attrition = 1
+	movement_speed = 0.1
+}
+
+serfs_recieved_by_cossacks = {
+	global_tax_modifier = -0.1
+}
+
+cossacks_modifier = {
+	stability_cost_modifier = 1.0
 }
