@@ -4,6 +4,7 @@ country_decisions = {
 		major = yes
 		potential = {
 			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
 			NOT = { has_country_flag = formed_netherlands_flag }
 			OR = {
 				ai = no
@@ -39,6 +40,7 @@ country_decisions = {
 				province_id = 98 # Utrecht
 				province_id = 99 # Gelre
 				province_id = 100 # Friesland
+				province_id = 4383 # Den Haag
 			}
 			OR = {
 				NOT = { owned_by = ROOT }
@@ -57,6 +59,7 @@ country_decisions = {
 			owns_core_province = 98 # Utrecht
 			owns_core_province = 99 # Gelre
 			owns_core_province = 100 # Friesland
+			owns_core_province = 4383 # Den Haag
 		}
 	 	effect = {
 			if = {
@@ -102,7 +105,8 @@ country_decisions = {
 					government = theocracy
 					religion = catholic
 				}
-				change_government = administrative_monarchy
+				change_government = monarchy
+				set_legacy_government = administrative_monarchy
 				PAP = {
 					add_opinion = {
 						who = ROOT
@@ -115,7 +119,8 @@ country_decisions = {
 					government = theocracy
 					NOT = { religion = catholic }
 				}
-				change_government = administrative_monarchy
+				change_government = monarchy
+				set_legacy_government = administrative_monarchy
 			}
 			if = {
 				limit = {

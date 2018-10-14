@@ -249,13 +249,18 @@ defined_text = {
         localisation_key = string_royalist
 		trigger = {
 			government = monarchy
-			NOT = { government = steppe_horde }
 		}
     }
 	text = {
         localisation_key = string_khanzada
 		trigger = {
-			government = steppe_horde
+			has_reform = steppe_horde
+		}
+    }
+	text = {
+        localisation_key = string_royalist
+		trigger = {
+			government = tribal
 		}
     }
 	text = {
@@ -1448,38 +1453,5 @@ defined_text = {
 				value = 5
 			}
 		}
-	}
-}
-
-defined_text = {
-	name = DutchRepublicLeader
-	
-	text = {
-        localisation_key = STADTHOLDER
-        trigger = {
-            NOT = { has_country_flag = stadtholderless_period }
-        }
-	}
-	text = { 
-        localisation_key = GRAND_PENSIONARY
-        trigger = {
-            has_country_flag = stadtholderless_period
-        }
-	}
-}
-defined_text = {
-	name = DutchRepublicLeaderFem
-	
-	text = {
-        localisation_key = STADTHOLDERESS
-        trigger = {
-            NOT = { has_country_flag = stadtholderless_period }
-        }
-	}
-	text = { 
-        localisation_key = GRAND_PENSIONARY
-        trigger = {
-            has_country_flag = stadtholderless_period
-        }
 	}
 }
