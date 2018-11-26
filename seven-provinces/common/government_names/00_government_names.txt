@@ -3307,7 +3307,6 @@ german_free_city = {
 	trigger = {
 		OR = {
 			has_reform = imperial_city
-			has_reform = imperial_city
 		}
 		culture_group = germanic
 		NOT = { 
@@ -3334,10 +3333,7 @@ dutch_free_city = {
 	}
 
 	trigger = {
-		OR = {
-			has_reform = imperial_city
-			has_reform = imperial_city
-		}
+		has_reform = imperial_city
 		OR = {
 			culture = dutch 
 			culture = frisian
@@ -3361,7 +3357,6 @@ gov_free_city = {
 
 	trigger = {
 		OR = {
-			has_reform = imperial_city
 			has_reform = imperial_city
 		}
 	}
@@ -3404,11 +3399,43 @@ dutch_colonial_government = {
 	}
 
 	trigger = {
-		primary_culture = dutch
+		OR = {
+			primary_culture = dutch 
+			primary_culture = frisian
+			primary_culture = flemish
+		}
 		OR = {
 			has_reform = colonial_government
 			has_reform = colonial_government_legacy
 		}
+		is_monarch_leader = no
+	}
+}
+
+dutch_colonial_government_general = {
+	rank = {
+		1 = COLONY
+	}
+
+	ruler_male = {
+		1 = DIRECTOR_GENERAL
+	}
+
+	ruler_female = {
+		1 = DIRECTORESS_GENERAL
+	}
+
+	trigger = {
+		OR = {
+			primary_culture = dutch 
+			primary_culture = frisian
+			primary_culture = flemish
+		}
+		OR = {
+			has_reform = colonial_government
+			has_reform = colonial_government_legacy
+		}
+		is_monarch_leader = yes
 	}
 }
 
@@ -3462,30 +3489,55 @@ ragusan_republic = {
 	}
 }
 
-dutch_republic = {
+#careful: This is not the Dutch Republic government form, just Dutch Republics in general.
+republic_dutch = {
 	rank = {
 		1 = REPUBLIC
-		2 = UNITED_PROVINCES
+		2 = GRAND_REPUBLIC
 		3 = GREAT_REPUBLIC
 	}
 
 	ruler_male = {
-		1 = GRAND_PENSIONARY
-		2 = STADTHOLDER
-		3 = GREAT_STADTHOLDER
-	}
-
-	ruler_female = {
-		1 = GRAND_PENSIONARY_fem
-		2 = STADTHOLDERESS
-		3 = GREAT_STADTHOLDERESS
+		1 = PENSIONARY
+		2 = GRAND_PENSIONARY
+		3 = GREAT_PENSIONARY
 	}
 
 	trigger = {
 		government = republic
-		primary_culture = dutch
+		OR = {
+			primary_culture = dutch 
+			primary_culture = frisian
+			primary_culture = flemish
+		}
 		NOT = { has_reform = revolutionary_republic_reform }
 		NOT = { has_reform = presidential_despot_reform }
+		NOT = { has_reform = dutch_republic }
+		NOT = { has_reform = peasants_republic }
+	}
+}
+
+dutch_republic_reform = {
+	rank = {
+		2 = UNITED_PROVINCES
+	}
+
+	ruler_male = {
+		2 = STADTHOLDER
+	}
+
+	ruler_female = {
+		2 = STADTHOLDERESS
+	}
+
+	trigger = {
+		government = republic
+		OR = {
+			primary_culture = dutch 
+			primary_culture = frisian
+			primary_culture = flemish
+		}
+		has_reform = dutch_republic
 	}
 }
 
@@ -3619,7 +3671,11 @@ frisian_freedom = {
 	}
 	trigger = {
 		has_reform = peasants_republic
-		primary_culture = frisian
+		OR = {
+			primary_culture = dutch 
+			primary_culture = frisian
+			primary_culture = flemish
+		}
 	}
 }
 
@@ -3651,35 +3707,6 @@ german_republic = {
 				primary_culture = frisian
 				primary_culture = flemish
 			}
-		}
-	}
-}
-dutch_republic = {
-	rank = {
-		1 = REPUBLIC
-		2 = GRAND_REPUBLIC
-		3 = FEDERAL_REPUBLIC
-	}
-
-	ruler_male = {
-		1 = RAADSPENSIONARIS
-		2 = GRAND_RAADSPENSIONARIS
-		3 = PRESIDENT
-	}
-
-	ruler_female = {
-		1 = RAADSPENSIONARIS_fem
-		2 = GRAND_RAADSPENSIONARIS_fem
-		3 = PRESIDENT_fem
-	}
-
-	trigger = {
-		government = republic
-		NOT = { has_reform = peasants_republic }
-		OR = {
-			primary_culture = dutch 
-			primary_culture = frisian
-			primary_culture = flemish
 		}
 	}
 }
