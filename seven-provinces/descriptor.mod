@@ -1,5 +1,5 @@
 name="Seven Provinces: Alpha Testing Mod"
-archive="mod/seven provinces"
+archive="mod/seven-provinces"
 tags={
 	"Overhaul"
 }
