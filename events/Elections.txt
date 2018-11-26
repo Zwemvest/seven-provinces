@@ -470,27 +470,18 @@ country_event = {
 #	}
 #}
 
-
-
-# Dutch Republic
+# States General (term elections)
 country_event = {
 	id = elections.720
 	title = elections.720.t
-	desc = {
-		trigger = { has_reform = dutch_republic }
-		desc = elections.720.da
-	}
-	
-	desc = {
-		trigger = { NOT = { has_reform = dutch_republic } }
-		desc = elections.720.db
-	}
+	desc = elections.720.d
 	picture = ELECTION_REPUBLICAN_eventPicture
 	
 	is_triggered_only = yes
 	
 	trigger = {
 		has_states_general_mechanic = yes
+		NOT = { has_reform = dutch_republic }
 		OR = {
 			is_lesser_in_union = no
 			is_statists_in_power = yes
@@ -502,20 +493,10 @@ country_event = {
 		define_ruler = {
 		}
 		change_statists_vs_orangists = -0.33
-	
-	}
-	option = {
-		trigger = { has_reform = dutch_republic }
-		name = elections.720.b
-		define_ruler = {
-			dynasty = "van Oranje"
-		}
-		change_statists_vs_orangists = 0.33
 	}
 
 	option = {
-		trigger = { NOT = { has_reform = dutch_republic } }
-		name = elections.720.c
+		name = elections.720.b
 		define_ruler = {
 			dynasty = "historic_dynasty" # Will pick one weighted by how many rulers a family has had
 		}
@@ -523,24 +504,19 @@ country_event = {
 	}
 }
 
+# States General (monarch death)
 country_event = {
 	id = elections.721
 	title = elections.720.t
-	desc = {
-		trigger = { has_reform = dutch_republic }
-		desc = elections.721.da
-	}
+	desc = elections.721.d
 	
-	desc = {
-		trigger = { NOT = { has_reform = dutch_republic } }
-		desc = elections.721.db
-	}
 	picture = ELECTION_REPUBLICAN_eventPicture
 	
 	is_triggered_only = yes
 	
 	trigger = {
 		has_states_general_mechanic = yes
+		NOT = { has_reform = dutch_republic }
 		OR = {
 			is_lesser_in_union = no
 			is_statists_in_power = yes
@@ -554,22 +530,292 @@ country_event = {
 		change_statists_vs_orangists = -0.33
 	
 	}
-	option = {
-		trigger = { has_reform = dutch_republic }
-		name = elections.720.b
-		define_ruler = {
-			dynasty = "van Oranje"
-		}
-		change_statists_vs_orangists = 0.33
-	}
 
 	option = {
-		trigger = { NOT = { has_reform = dutch_republic } }
-		name = elections.720.c
+		name = elections.720.b
 		define_ruler = {
 			dynasty = "historic_dynasty" # Will pick one weighted by how many rulers a family has had
 		}
 		change_statists_vs_orangists = 0.33
+	}
+}
+
+# Dutch Republic (setup elections) (hidden)
+country_event = {
+	id = elections.729
+	
+	is_triggered_only = yes
+	hidden = yes
+	
+	trigger = {
+		has_reform = dutch_republic
+		NOT = { has_country_flag = skip_elections_set }
+	}
+	
+	immediate = {
+		set_variable = {
+			which = skip_elections
+			value = 0
+		}
+		set_country_flag = skip_elections_set
+		country_event = { 
+			id = elections.730
+			#days = 1460
+			#TEMP Changed to 30 for debug purposes
+			days = 30
+		}
+	}
+	option = { }
+}
+
+# Dutch Republic (elections) (hidden)
+country_event = {
+	id = elections.730
+	
+	is_triggered_only = yes
+	hidden = yes
+	
+	trigger = {
+		has_reform = dutch_republic
+	}
+	
+	immediate = {
+		country_event = { 
+			id = elections.731
+			#days = 1460
+			#TEMP: Set to 30 days
+			days = 30
+		}
+	}
+	option = { }
+}
+
+# Dutch Republic (elections) (hidden, check for skipping)
+country_event = {
+	id = elections.731
+	
+	is_triggered_only = yes
+	hidden = yes
+	
+	immediate = {
+		if = {
+			limit = {
+				check_variable = {
+					which = skip_elections
+					value = 1
+				}
+			}
+			subtract_variable = {
+				which = skip_elections
+				value = 1
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					NOT = { has_reform = empower_stadtholder_reform }
+					is_lesser_in_union = no
+					OR = {
+						is_statists_in_power = yes
+						has_reform = leave_stadtholder_office_empty_reform
+					}
+				}
+				country_event = { 
+					id = elections.732
+				}
+			}
+			country_event = {
+				id = elections.730
+			}
+		}
+	}
+	option = { }
+}
+
+# Dutch Republic (elections) (normal)
+country_event = {
+	id = elections.732
+	title = elections.732.t
+	desc = elections.732.d
+	
+	picture = ELECTION_REPUBLICAN_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_reform = empower_stadtholder_reform }
+		OR = {
+			is_lesser_in_union = no
+			is_statists_in_power = yes
+			has_reform = leave_stadtholder_office_empty_reform
+		}
+	}
+				
+	option = {
+		name = elections.732.a
+		define_ruler = {
+		}
+		change_statists_vs_orangists = -0.33
+		hidden_effect = {
+			set_ruler_flag = dutch_republican_candidate
+		}	
+	}
+	option = {
+		name = elections.732.b
+		define_ruler = {
+			dynasty = "van Oranje"
+		}
+		change_statists_vs_orangists = 0.33
+		hidden_effect = {
+			set_ruler_flag = dutch_orangist_candidate
+		}	
+	}
+}
+
+# Dutch Republic (monarch death) (hidden)
+country_event = {
+	id = elections.740
+	
+	picture = ELECTION_REPUBLICAN_eventPicture
+	
+	is_triggered_only = yes
+	hidden = yes
+	
+	trigger = {
+		has_reform = dutch_republic
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				is_lesser_in_union = no
+				NOT = { has_reform = empower_stadtholder_reform }
+			}
+			country_event = { 
+				# Normal dynastic elections 
+				id = elections.741
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					is_lesser_in_union = no
+					has_reform = empower_stadtholder_reform
+					OR = {
+						has_heir = no
+						NOT = { heir_age = 15 }
+					}
+				}
+				country_event = { 
+					# Stadtholderless Era!
+					id = elections.750
+				}
+			}
+			else = {
+				country_event = { 
+					# Monarch-like dynastic elections
+					id = elections.742
+				}
+			}
+		}
+	}	
+	option = { }	
+}
+
+# Dutch Republic (monarch death) (elections, normal)
+country_event = {
+	id = elections.741
+	title = elections.741.t
+	desc = elections.741.d
+	
+	picture = ELECTION_REPUBLICAN_eventPicture
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			change_variable = {
+				which = skip_elections
+				value = 1
+			}
+			country_event = { 
+				id = elections.730
+			}
+		}	
+	}
+	
+	option = {
+		name = elections.741.a
+		define_ruler = {
+		}
+		change_statists_vs_orangists = -0.33
+		hidden_effect = {
+			set_ruler_flag = dutch_republican_candidate
+		}	
+	}
+	option = {
+		name = elections.741.b
+		define_ruler = {
+			dynasty = "van Oranje" 
+		}
+		change_statists_vs_orangists = 0.33
+		hidden_effect = {
+			set_ruler_flag = dutch_orangist_candidate
+		}	
+	}
+}
+
+# Dutch Republic (monarch death) (hereditary)
+country_event = {
+	id = elections.742
+	title = elections.742.t
+	desc = elections.742.d
+	
+	picture = ELECTION_REPUBLICAN_eventPicture
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = { 
+			set_ruler_flag = dutch_orangist_candidate
+		}
+	}
+	
+	option = {
+		name = elections.742.a
+		change_statists_vs_orangists = -0.33
+	}
+
+	option = {
+		name = elections.742.b
+		change_statists_vs_orangists = 0.33
+	}
+}
+
+# Dutch Republic (monarch death) (stadtholderless)
+country_event = {
+	id = elections.750
+	title = elections.750.t
+	desc = elections.750.d
+	
+	picture = ELECTION_REPUBLICAN_eventPicture
+	
+	is_triggered_only = yes
+
+	# A stadtholderless era starts
+	option = {
+		name = elections.750.a
+		add_government_reform = stadtholderless_era_reform
+		hidden_effect = {
+			set_ruler_flag = dutch_republican_candidate
+			change_variable = {
+				which = skip_elections
+				value = 1
+			}
+			country_event = { 
+				id = elections.730
+			}
+		}	
 	}
 }
 
