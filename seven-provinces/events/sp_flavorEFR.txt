@@ -1,0 +1,66 @@
+########################################
+# Events for East Frisia
+#
+# written by Richard Bleek
+########################################
+
+namespace = sp_flavor_efr
+normal_or_historical_nations = yes
+
+#Join HRE event
+country_event = {
+    id = sp_flavor_efr.1
+    title = sp_flavor_efr.1.t
+    desc = sp_flavor_efr.1.d
+    picture = DIPLOMACY_eventPicture
+
+    fire_only_once = yes
+
+    trigger = {
+        tag = EFR
+        is_year = 1445
+        is_at_war = no
+        is_part_of_hre = no
+    }
+
+    mean_time_to_happen = {
+        months = 12
+    }
+
+    # Join empire and become a monarchy
+    option = {
+        ai_chance = { factor = 70 }
+        name = sp_flavor_efr.1.a
+
+        set_in_empire = yes
+        change_government_via_reform = monarchy
+        add_government_reform = feudalism_reform
+        set_legacy_government = feudal_monarchy
+
+		define_ruler = {
+			name = "Ulrich"
+			dynasty = "Cirksena"
+			adm = 2
+			dip = 2
+			mil = 2
+            age = 36
+		}
+
+        imperial_influencea = 1
+		emperor = {
+            add_opinion = { who = EFR modifier = stayed_in_the_empire }
+		}
+
+    }
+
+    # Remain peasant republic
+    option = {
+        name = sp_flavor_efr.1.b
+        add_stability = 1
+        
+        emperor = {
+			add_opinion = { who = EFR modifier = slipped_out_of_empire }
+		}
+    }
+    
+}
