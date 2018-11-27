@@ -1,0 +1,498 @@
+########################################
+# Events for the 80 Years War and the Dutch independance
+#
+# written by Rik Oostveen
+########################################
+
+
+namespace = sp_flavor_80yw
+normal_or_historical_nations = yes
+
+#Dutch Agitation
+country_event = {
+    id = sp_flavor_80yw.1
+    title = "sp_flavor_80yw.1.t"
+    desc = "sp_flavor_80yw.1.d"
+    picture = CIVIL_WAR_eventPicture
+
+    fire_only_once = yes
+
+    trigger = {
+        current_age = age_of_reformation
+		is_year = 1550
+		NOT = { has_global_flag = 80yw_dutch_independance_started } 
+		NOT = { exists = NED }
+		is_free_or_tributary_trigger = yes
+		num_of_cities = 6
+		any_owned_province = {
+			region = low_countries_region
+		}
+		NOT = { 
+			OR = {
+				primary_culture = dutch
+				primary_culture = frisian
+				primary_culture = flemish
+			}
+		}
+		OR = {
+			any_owned_province = {		
+				region = low_countries_region
+				OR = {
+					culture = dutch
+					culture = frisian
+					culture = flemish
+				}
+				OR = {
+					has_owner_accepted_culture = no
+					NOT = { tolerance_to_this = 0 }
+				}
+			}
+			has_country_flag = bur_successor
+		}
+    }
+
+    mean_time_to_happen = {
+        months = 2000
+		# Not protestant/reformed 
+		# (Event can still trigger for protestant/reformed nations owning catholic provinces!)
+		modifier = {
+			factor = 0.5
+			NOT = {
+				OR = {
+					religion = reformed
+					religion = protestant
+				}
+			}
+			any_owned_province = {
+				region = low_countries_region
+				OR = {
+					culture = dutch
+					culture = frisian
+					culture = flemish
+				}
+				has_owner_religion = no
+				OR = {
+					religion = reformed
+					religion = protestant
+				}
+			}
+		}
+		# Enclave
+		modifier = {
+			factor = 0.5
+			any_owned_province = {
+				region = low_countries_region
+				OR = {
+					culture = dutch
+					culture = frisian
+					culture = flemish
+				}
+				is_in_capital_area = no
+			}
+		}
+		# Not accepted culture 1
+		modifier = {
+			factor = 0.75		
+			num_of_owned_provinces_with = {			
+				value = 2	
+				region = low_countries_region
+				OR = {
+					culture = dutch
+					culture = frisian
+					culture = flemish
+				}
+				has_owner_accepted_culture = no
+			}
+		}
+		# Not accepted culture 2
+		modifier = {
+			factor = 0.75		
+			num_of_owned_provinces_with = {			
+				value = 4	
+				region = low_countries_region
+				OR = {
+					culture = dutch
+					culture = frisian
+					culture = flemish
+				}
+				has_owner_accepted_culture = no
+			}
+		}
+		# Not accepted culture 3
+		modifier = {
+			factor = 0.75		
+			num_of_owned_provinces_with = {			
+				value = 6
+				region = low_countries_region
+				OR = {
+					culture = dutch
+					culture = frisian
+					culture = flemish
+				}
+				has_owner_accepted_culture = no
+			}
+		}
+		# Not accepted culture 4
+		modifier = {
+			factor = 0.75		
+			num_of_owned_provinces_with = {			
+				value = 8
+				region = low_countries_region
+				OR = {
+					culture = dutch
+					culture = frisian
+					culture = flemish
+				}
+				has_owner_accepted_culture = no
+			}
+		}
+		# Religious conflict 1
+		modifier = {
+			factor = 0.75		
+			num_of_owned_provinces_with = {			
+				value = 2		
+				region = low_countries_region
+				OR = {
+					culture = dutch
+					culture = frisian
+					culture = flemish
+				}
+				NOT = { tolerance_to_this = 0 }
+			}
+		}
+		# Religious conflict 2
+		modifier = {
+			factor = 0.75		
+			num_of_owned_provinces_with = {			
+				value = 4		
+				region = low_countries_region
+				OR = {
+					culture = dutch
+					culture = frisian
+					culture = flemish
+				}
+				NOT = { tolerance_to_this = 0 }
+			}
+		}
+		# Religious conflict 3
+		modifier = {
+			factor = 0.75		
+			num_of_owned_provinces_with = {			
+				value = 6		
+				region = low_countries_region
+				OR = {
+					culture = dutch
+					culture = frisian
+					culture = flemish
+				}
+				NOT = { tolerance_to_this = 0 }
+			}
+		}
+		# Religious conflict 4
+		modifier = {
+			factor = 0.75		
+			num_of_owned_provinces_with = {			
+				value = 8		
+				region = low_countries_region
+				OR = {
+					culture = dutch
+					culture = frisian
+					culture = flemish
+				}
+				NOT = { tolerance_to_this = 0 }
+			}
+		}
+		# Autonomy conflict 1
+		modifier = {
+			factor = 0.75		
+			num_of_owned_provinces_with = {			
+				value = 2		
+				region = low_countries_region
+				OR = {
+					culture = dutch
+					culture = frisian
+					culture = flemish
+				}
+				unrest = 1
+			}
+		}
+		# Autonomy conflict 2
+		modifier = {
+			factor = 0.75		
+			num_of_owned_provinces_with = {			
+				value = 4		
+				region = low_countries_region
+				OR = {
+					culture = dutch
+					culture = frisian
+					culture = flemish
+				}
+				unrest = 1
+			}
+		}
+		# Autonomy conflict 3
+		modifier = {
+			factor = 0.75		
+			num_of_owned_provinces_with = {			
+				value = 6		
+				region = low_countries_region
+				OR = {
+					culture = dutch
+					culture = frisian
+					culture = flemish
+				}
+				unrest = 1
+			}
+		}
+		# Autonomy conflict 4
+		modifier = {
+			factor = 0.75		
+			num_of_owned_provinces_with = {			
+				value = 8		
+				region = low_countries_region
+				OR = {
+					culture = dutch
+					culture = frisian
+					culture = flemish
+				}
+				unrest = 1
+			}
+		}
+    }
+	
+	immediate = {
+		hidden_effect = {		
+			set_country_flag = 80yw_dutch_independance
+			set_global_flag = 80yw_dutch_independance_started
+			every_country = {
+				limit = {
+					NOT = { has_country_flag = 80yw_dutch_independance }
+					any_owned_province = {
+						OR = {
+							area = holland_area
+							area = netherlands_area
+							area = frisia_area
+						}
+					}
+				}
+				country_event = {
+					id = sp_flavor_80yw.2
+				}
+			}
+		}
+	}
+
+    # Harsh measures
+    option = {
+        name = "sp_flavor_80yw.1.a"
+		add_stability = 1
+    }
+    # Promise concessions
+    option = {
+        name = "sp_flavor_80yw.1.b"
+		add_stability = -1
+    }
+}
+
+#Unrest in the Netherlands
+country_event = {
+	id = sp_flavor_80yw.2
+    title = "sp_flavor_80yw.2.t"
+    desc = "sp_flavor_80yw.2.d"
+    picture = CIVIL_WAR_eventPicture
+		
+	is_triggered_only = yes
+	
+    # We shall watch these developments with great interest
+    option = {
+        name = "sp_flavor_80yw.2.a"
+    }
+}
+
+# Alva
+country_event = {
+	id = sp_flavor_80yw.50
+    title = sp_flavor_80yw.50.t
+	
+	is_triggered_only = yes
+
+	desc = {
+		trigger = { 
+			OR = { 
+				tag = CAS 
+				tag = SPA
+			} 
+		}
+		desc = sp_flavor_80yw.50.d1
+	}
+	desc = {
+		trigger = { 
+			NOT = {
+				OR = { 
+					tag = CAS 
+					tag = SPA
+				} 
+			}
+		}
+		desc = sp_flavor_80yw.50.d2
+	}
+    picture = CIVIL_WAR_eventPicture
+
+    fire_only_once = yes
+	trigger = { 
+		has_country_flag = 80yw_dutch_independance
+	}
+	
+    # Send Alva to replace the governor and restore order
+    option = {
+		trigger = {
+			OR = { 
+				tag = CAS 
+				tag = SPA
+			} 
+		}
+        name = "sp_flavor_80yw.50.a"
+
+		add_country_modifier = { 
+			name = alva_harsh
+			duration = 7300
+		}
+		
+		define_general =  {	
+			name = "Fadrique Álv. de Toledo"
+			fire = 3	
+			shock = 5	
+			manuever = 4	
+			siege = 3
+		}
+		capital_scope = {
+			infantry = ROOT
+			infantry = ROOT
+			infantry = ROOT
+			infantry = ROOT
+			infantry = ROOT
+			infantry = ROOT
+			cavalry = ROOT
+			cavalry = ROOT
+			cavalry = ROOT
+		}	
+		set_country_flag = 80yw_alva_harsh
+		set_country_flag = 80yw_alva
+    }
+    # Send a local general replace the governor and restore order in the Netherlands
+    option = {
+		trigger = {
+			NOT = {	
+				OR = { 
+					tag = CAS 
+					tag = SPA
+				} 
+			} 
+		}
+        name = "sp_flavor_80yw.50.b"
+
+		add_country_modifier = { 
+			name = alva_harsh
+			duration = 7300
+		}
+		
+		create_general = 40
+		capital_scope = {
+			infantry = ROOT
+			infantry = ROOT
+			infantry = ROOT
+			infantry = ROOT
+			infantry = ROOT
+			infantry = ROOT
+			cavalry = ROOT
+			cavalry = ROOT
+			cavalry = ROOT
+		}	
+		set_country_flag = alva_harsh
+		set_country_flag = alva
+    }
+    # Pressure the governor to restore order
+    option = {
+        name = "sp_flavor_80yw.50.c"
+		add_country_modifier = { 
+			name = alva_neutral
+			duration = 7300
+		}
+		set_country_flag = alva_neutral
+		set_country_flag = alva
+    }
+    # Engage in dialogue
+    option = {
+        name = "sp_flavor_80yw.50.d"
+		set_country_flag = alva_concede
+		set_country_flag = alva
+    }
+}
+
+# Blood Council
+country_event = {
+	id = sp_flavor_80yw.51
+    title = "sp_flavor_80yw.51.t"
+    desc = "sp_flavor_80yw.51.d"
+    picture = CIVIL_WAR_eventPicture
+
+	major = yes
+    fire_only_once = yes
+	
+    # We shall watch these developments with great interest
+    option = {
+        name = "sp_flavor_80yw.51.a"
+    }
+}
+
+# Beheading of Egmont and Horne
+country_event = {
+	id = sp_flavor_80yw.52
+    title = "sp_flavor_80yw.52.t"
+    desc = "sp_flavor_80yw.52.d"
+    picture = CIVIL_WAR_eventPicture
+
+	major = yes
+    fire_only_once = yes
+	
+    # We shall watch these developments with great interest
+    option = {
+        name = "sp_flavor_80yw.52.a"
+    }
+}
+
+# Tiende Penning
+country_event = {
+	id = sp_flavor_80yw.53
+    title = "sp_flavor_80yw.53.t"
+    desc = "sp_flavor_80yw.53.d"
+    picture = CIVIL_WAR_eventPicture
+
+	major = yes
+    fire_only_once = yes
+	
+    # We shall watch these developments with great interest
+    option = {
+        name = "sp_flavor_80yw.53.a"
+    }
+}
+
+# Dutch proclaim loyalty
+
+# Dutch declare independance
+
+# Dutch seek allies from abroad...
+
+# Dutch ask France
+
+# Dutch ask Britain
+
+# Dutch ask Spain
+
+# Dutch ask Emperor
+
+# Dutch ask rivals
+
+# William of Orange
+
+# Proclaim William Stadtholder

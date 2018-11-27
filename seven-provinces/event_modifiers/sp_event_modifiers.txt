@@ -1,0 +1,11 @@
+﻿##################################################################################################
+# scriptable and usable for event-system below.
+##################################################################################################
+
+alva_neutral = {
+	tolerance_heretic = 1
+	tolerance_heretic = -1
+	global_heretic_missionary_strength = -0.01
+	papal_influence = -2
+	global_tax_modifier = -0.1
+}
