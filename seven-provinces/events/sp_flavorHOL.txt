@@ -11,7 +11,7 @@ country_event {
     id = sp_flavor_hol.1
     title = "sp_flavor_hol.1.t"
     desc = "sp_flavor_hol.1.d"
-    picture = MERCHANT_TALKING_eventPicture
+    picture = MERCHANTS_TALKING_eventPicture
 
     fire_only_once = yes
 
@@ -27,6 +27,10 @@ country_event {
 
     option = {
         name = "sp_flavor_hol.1.a"
+        add_country_modifier = {
+            name = tulip_mania
+			duration = -1
+        }
     }
 }
 
@@ -34,13 +38,13 @@ country_event {
     id = sp_flavor_hol.2
     title = "sp_flavor_hol.2.t"
     desc = "sp_flavor_hol.2.d"
-    picture = CORRUPTION_eventPicture
+    picture = ECONOMY_eventPicture
 
     fire_only_once = yes
 
     trigger = {
-        tag = NED
         is_year = 1620
+        has_country_modifier = tulip_mania
     }
 
     mean_time_to_happen = {
@@ -49,9 +53,20 @@ country_event {
 
     option = {
         name = "sp_flavor_hol.2.a"
+        set_country_flag = exporting_tulips
+        add_estate_loyalty = {
+            estate = estate_burghers
+            loyalty = 10
+        }
+        add_mercantilism = 4
     }
     option = {
         name = "sp_flavor_hol.2.b"
+        set_country_flag = not_exporting_tulips
+        add_estate_loyalty = {
+            estate = estate_burghers
+            loyalty = -10
+        }
     }
 }
 
@@ -64,7 +79,8 @@ country_event {
     fire_only_once = yes
 
     trigger = {
-        tag = NED
+        has_country_flag = exporting_tulips
+        has_country_modifier = tulip_mania
     }
 
     mean_time_to_happen = {
@@ -73,9 +89,17 @@ country_event {
 
     option = {
         name = "sp_flavor_hol.3.a"
+        clr_country_flag = exporting_tulips
+        remove_country_modifier = tulip_mania
+        add_stability = -1
+        add_mercantilism = -6
     }
     option = {
         name = "sp_flavor_hol.3.b"
+        clr_country_flag = exporting_tulips
+        remove_country_modifier = tulip_mania
+        add_years_of_income = -0.5
+        add_inflation = 5
     }
 }
 
@@ -88,7 +112,8 @@ country_event {
     fire_only_once = yes
 
     trigger = {
-        tag = NED
+        has_country_flag = not_exporting_tulips
+        has_country_modifier = tulip_mania
     }
 
     mean_time_to_happen = {
@@ -97,5 +122,7 @@ country_event {
 
     option = {
         name = "sp_flavor_hol.4.a"
+        clr_country_flag = not_exporting_tulips
+        remove_country_modifier = tulip_mania
     }
 }
