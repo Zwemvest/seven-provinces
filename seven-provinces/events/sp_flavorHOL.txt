@@ -1,0 +1,128 @@
+########################################
+# Mod Flavor events for Holland/The Netherlands
+# written by Richard Bleek
+########################################
+
+namespace = sp_flavor_hol
+normal_or_historical_nations = yes
+
+#Tulip Mania event chain
+country_event {
+    id = sp_flavor_hol.1
+    title = "sp_flavor_hol.1.t"
+    desc = "sp_flavor_hol.1.d"
+    picture = MERCHANTS_TALKING_eventPicture
+
+    fire_only_once = yes
+
+    trigger = {
+        tag = NED
+        is_year = 1550
+        monthly_income = 150
+    }
+
+    mean_time_to_happen = {
+        months = 64
+    }
+
+    option = {
+        name = "sp_flavor_hol.1.a"
+        add_country_modifier = {
+            name = tulip_mania
+			duration = -1
+        }
+    }
+}
+
+country_event {
+    id = sp_flavor_hol.2
+    title = "sp_flavor_hol.2.t"
+    desc = "sp_flavor_hol.2.d"
+    picture = ECONOMY_eventPicture
+
+    fire_only_once = yes
+
+    trigger = {
+        is_year = 1620
+        has_country_modifier = tulip_mania
+    }
+
+    mean_time_to_happen = {
+        months = 64
+    }
+
+    option = {
+        name = "sp_flavor_hol.2.a"
+        set_country_flag = exporting_tulips
+        add_estate_loyalty = {
+            estate = estate_burghers
+            loyalty = 10
+        }
+        add_mercantilism = 4
+    }
+    option = {
+        name = "sp_flavor_hol.2.b"
+        set_country_flag = not_exporting_tulips
+        add_estate_loyalty = {
+            estate = estate_burghers
+            loyalty = -10
+        }
+    }
+}
+
+country_event {
+    id = sp_flavor_hol.3
+    title = "sp_flavor_hol.3.t"
+    desc = "sp_flavor_hol.3.d"
+    picture = DEBATE_REPUBLICAN_eventPicture
+
+    fire_only_once = yes
+
+    trigger = {
+        has_country_flag = exporting_tulips
+        has_country_modifier = tulip_mania
+    }
+
+    mean_time_to_happen = {
+        months = 24
+    }
+
+    option = {
+        name = "sp_flavor_hol.3.a"
+        clr_country_flag = exporting_tulips
+        remove_country_modifier = tulip_mania
+        add_stability = -1
+        add_mercantilism = -6
+    }
+    option = {
+        name = "sp_flavor_hol.3.b"
+        clr_country_flag = exporting_tulips
+        remove_country_modifier = tulip_mania
+        add_years_of_income = -0.5
+        add_inflation = 5
+    }
+}
+
+country_event {
+    id = sp_flavor_hol.4
+    title = "sp_flavor_hol.4.t"
+    desc = "sp_flavor_hol.4.d"
+    picture = CITY_DEVELOPMENT_eventPicture
+
+    fire_only_once = yes
+
+    trigger = {
+        has_country_flag = not_exporting_tulips
+        has_country_modifier = tulip_mania
+    }
+
+    mean_time_to_happen = {
+        months = 24
+    }
+
+    option = {
+        name = "sp_flavor_hol.4.a"
+        clr_country_flag = not_exporting_tulips
+        remove_country_modifier = tulip_mania
+    }
+}
