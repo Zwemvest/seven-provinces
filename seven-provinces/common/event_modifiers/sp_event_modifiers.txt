@@ -1,0 +1,42 @@
+﻿##################################################################################################
+# scriptable and usable for event-system below.
+##################################################################################################
+
+national_bank_interest2 = {
+	interest = -0.5
+}
+
+sp_begin_harsh_province = {
+	local_unrest = 5
+	local_autonomy = -0.1
+}
+
+sp_begin_concede_province = {
+	local_autonomy = 0.05
+}
+
+sp_alva_harsh = {
+	tolerance_heretic = -2
+	papal_influence = 2
+	legitimacy = 0.5
+}
+
+sp_alva_harsh_province = {
+	local_unrest = 5
+	local_missionary_strength = 0.1
+}
+
+sp_alva_concede = {
+	tolerance_heretic = 2
+	tolerance_own = -2
+	global_heretic_missionary_strength = -0.05
+	papal_influence = -5
+	legitimacy = -1
+}
+
+sp_alva_concede_province = {
+	local_autonomy = 0.05
+	local_missionary_strength = -0.1
+	local_culture_conversion_cost = 0.5
+	religious_conversion_resistance = -0.2
+}

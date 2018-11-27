@@ -12,10 +12,113 @@ normal_or_historical_nations = yes
 country_event = {
     id = sp_flavor_80yw.1
     title = "sp_flavor_80yw.1.t"
-    desc = "sp_flavor_80yw.1.d"
+	desc = {
+		trigger = { 
+			OR = { 
+				tag = CAS 
+				tag = SPA
+			} 
+			religion = catholic
+			any_owned_province = {		
+				region = low_countries_region
+				OR = {
+					culture = dutch
+					culture = frisian
+					culture = flemish
+				}
+				NOT = { religion = catholic }
+			}
+		}
+		desc = "sp_flavor_80yw.1.d1"
+	}
+	desc = {
+		trigger = { 
+			OR = { 
+				tag = CAS 
+				tag = SPA
+			} 
+			religion = catholic
+			NOT = {
+				any_owned_province = {		
+					region = low_countries_region
+					OR = {
+						culture = dutch
+						culture = frisian
+						culture = flemish
+					}
+					NOT = { religion = catholic }
+				}
+			}
+		}
+		desc = "sp_flavor_80yw.1.d2"
+	}
+	desc = {
+		trigger = { 
+			OR = { 
+				tag = CAS 
+				tag = SPA
+			}
+			NOT = { religion = catholic } 
+		}
+		desc = "sp_flavor_80yw.1.d3"
+	}
+	desc = {
+		trigger = { 
+			NOT = {
+				OR = { 
+					tag = CAS 
+					tag = SPA
+				} 
+			}
+			religion = catholic
+			any_owned_province = {		
+				region = low_countries_region
+				OR = {
+					culture = dutch
+					culture = frisian
+					culture = flemish
+				}
+				NOT = { religion = catholic }
+			}
+		}
+		desc = "sp_flavor_80yw.1.d4"
+	}
+	desc = {
+		trigger = { 
+			NOT = {
+				OR = { 
+					tag = CAS 
+					tag = SPA
+				} 
+			}
+			religion = catholic
+			NOT = {
+				any_owned_province = {		
+					region = low_countries_region
+					OR = {
+						culture = dutch
+						culture = frisian
+						culture = flemish
+					}
+					NOT = { religion = catholic }
+				}
+			}
+		}
+		desc = "sp_flavor_80yw.1.d5"
+	}
+	desc = {
+		trigger = { 
+			NOT = {
+				OR = { 
+					tag = CAS 
+					tag = SPA
+				} 
+			}
+			NOT = { religion = catholic } 
+		}
+		desc = "sp_flavor_80yw.1.d6"
+	}
     picture = CIVIL_WAR_eventPicture
-
-    fire_only_once = yes
 
     trigger = {
         current_age = age_of_reformation
@@ -279,18 +382,40 @@ country_event = {
 					id = sp_flavor_80yw.2
 				}
 			}
+			country_event = {
+				sp_flavor_80yw.50
+				days = 365
+			}
 		}
 	}
 
     # Harsh measures
     option = {
         name = "sp_flavor_80yw.1.a"
-		add_stability = 1
+		
+		low_countries_region = {
+			add_province_modifier = { 
+				name = sp_begin_harsh_province
+				duration = 7300
+			}
+		}
+
+		set_country_flag = 80yw_begin_harsh_flag
+		custom_tooltip = sp_flavor_80yw_antagonize
     }
     # Promise concessions
     option = {
         name = "sp_flavor_80yw.1.b"
-		add_stability = -1
+		
+		low_countries_region = {
+			add_province_modifier = { 
+				name = sp_begin_concede_province
+				duration = 7300
+			}
+		}
+
+		set_country_flag = 80yw_begin_concede_flag
+		custom_tooltip = sp_flavor_80yw_placate
     }
 }
 
@@ -305,14 +430,36 @@ country_event = {
 	
     # We shall watch these developments with great interest
     option = {
+		trigger = {
+			OR = {
+				primary_culture = dutch
+				primary_culture = frisian
+				primary_culture = flemish
+				primary_culture = wallonian
+			}
+		}
         name = "sp_flavor_80yw.2.a"
+    }
+    # Let's remain cautious
+    option = {
+		trigger = {
+			NOT = {
+				OR = {
+					primary_culture = dutch
+					primary_culture = frisian
+					primary_culture = flemish
+					primary_culture = wallonian
+				}
+			}
+		}
+        name = "sp_flavor_80yw.2.b"
     }
 }
 
 # Alva
 country_event = {
 	id = sp_flavor_80yw.50
-    title = sp_flavor_80yw.50.t
+    title = "sp_flavor_80yw.50.t"
 	
 	is_triggered_only = yes
 
@@ -323,7 +470,7 @@ country_event = {
 				tag = SPA
 			} 
 		}
-		desc = sp_flavor_80yw.50.d1
+		desc = "sp_flavor_80yw.50.d1"
 	}
 	desc = {
 		trigger = { 
@@ -334,15 +481,19 @@ country_event = {
 				} 
 			}
 		}
-		desc = sp_flavor_80yw.50.d2
+		desc = "sp_flavor_80yw.50.d2"
 	}
     picture = CIVIL_WAR_eventPicture
-
-    fire_only_once = yes
-	trigger = { 
-		has_country_flag = 80yw_dutch_independance
-	}
 	
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				sp_flavor_80yw.51
+				days = 365
+			}
+		}
+	}
+
     # Send Alva to replace the governor and restore order
     option = {
 		trigger = {
@@ -353,11 +504,6 @@ country_event = {
 		}
         name = "sp_flavor_80yw.50.a"
 
-		add_country_modifier = { 
-			name = alva_harsh
-			duration = 7300
-		}
-		
 		define_general =  {	
 			name = "Fadrique Álv. de Toledo"
 			fire = 3	
@@ -376,8 +522,19 @@ country_event = {
 			cavalry = ROOT
 			cavalry = ROOT
 		}	
-		set_country_flag = 80yw_alva_harsh
-		set_country_flag = 80yw_alva
+ 
+		add_country_modifier = { 
+			name = sp_alva_harsh
+			duration = 7300
+		}
+		low_countries_region = {
+			add_province_modifier = { 
+				name = sp_alva_harsh_province
+				duration = 7300
+			}
+		}
+		set_country_flag = 80yw_alva_harsh_flag
+		custom_tooltip = sp_flavor_80yw_antagonize
     }
     # Send a local general replace the governor and restore order in the Netherlands
     option = {
@@ -386,17 +543,13 @@ country_event = {
 				OR = { 
 					tag = CAS 
 					tag = SPA
-				} 
+				}
 			} 
 		}
-        name = "sp_flavor_80yw.50.b"
-
-		add_country_modifier = { 
-			name = alva_harsh
-			duration = 7300
-		}
-		
-		create_general = 40
+       	name = "sp_flavor_80yw.50.b"
+	
+		create_general =  { tradition = 50 }
+	
 		capital_scope = {
 			infantry = ROOT
 			infantry = ROOT
@@ -408,24 +561,36 @@ country_event = {
 			cavalry = ROOT
 			cavalry = ROOT
 		}	
-		set_country_flag = alva_harsh
-		set_country_flag = alva
-    }
-    # Pressure the governor to restore order
-    option = {
-        name = "sp_flavor_80yw.50.c"
+	
 		add_country_modifier = { 
-			name = alva_neutral
+			name = sp_alva_harsh
 			duration = 7300
 		}
-		set_country_flag = alva_neutral
-		set_country_flag = alva
+		low_countries_region = {
+			add_province_modifier = { 
+				name = sp_alva_harsh_province
+				duration = 7300
+			}
+		}
+
+		set_country_flag = 80yw_alva_harsh
+		custom_tooltip = sp_flavor_80yw_antagonize
     }
     # Engage in dialogue
     option = {
-        name = "sp_flavor_80yw.50.d"
-		set_country_flag = alva_concede
-		set_country_flag = alva
+        name = "sp_flavor_80yw.50.c"
+		add_country_modifier = { 
+			name = sp_alva_concede
+			duration = 7300
+		}
+		low_countries_region = {
+			add_province_modifier = { 
+				name = sp_alva_concede_province
+				duration = 7300
+			}
+		}
+		set_country_flag = 80yw_alva_concede_flag
+		custom_tooltip = sp_flavor_80yw_placate
     }
 }
 
