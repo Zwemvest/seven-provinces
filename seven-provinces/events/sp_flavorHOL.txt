@@ -26,7 +26,7 @@ country_event {
     }
 
     option = {
-        name = "sp_flavor_hol.2.a"
+        name = "sp_flavor_hol.1.a"
     }
 }
 
@@ -57,7 +57,7 @@ country_event {
 
 country_event {
     id = sp_flavor_hol.3
-    title = "sp_flavor_hol.2.t"
+    title = "sp_flavor_hol.3.t"
     desc = "sp_flavor_hol.3.d"
     picture = DEBATE_REPUBLICAN_eventPicture
 
