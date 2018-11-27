@@ -34,7 +34,7 @@ country_event = {
 
         set_in_empire = yes
         change_government_via_reform = monarchy
-        add_government_reform = feudalism_reform
+        add_government_reform = feudal_monarchy
         set_legacy_government = feudal_monarchy
 
 		define_ruler = {
