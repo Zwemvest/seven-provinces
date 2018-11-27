@@ -1,0 +1,101 @@
+########################################
+# Mod Flavor events for Holland/The Netherlands
+# written by Richard Bleek
+########################################
+
+namespace = sp_flavor_hol
+normal_or_historical_nations = yes
+
+#Tulip Mania event chain
+country_event {
+    id = sp_flavor_hol.1
+    title = "sp_flavor_hol.1.t"
+    desc = "sp_flavor_hol.1.d"
+    picture = MERCHANT_TALKING_eventPicture
+
+    fire_only_once = yes
+
+    trigger = {
+        tag = NED
+        is_year = 1550
+        monthly_income = 150
+    }
+
+    mean_time_to_happen = {
+        months = 64
+    }
+
+    option = {
+        name = "sp_flavor_hol.2.a"
+    }
+}
+
+country_event {
+    id = sp_flavor_hol.2
+    title = "sp_flavor_hol.2.t"
+    desc = "sp_flavor_hol.2.d"
+    picture = CORRUPTION_eventPicture
+
+    fire_only_once = yes
+
+    trigger = {
+        tag = NED
+        is_year = 1620
+    }
+
+    mean_time_to_happen = {
+        months = 64
+    }
+
+    option = {
+        name = "sp_flavor_hol.2.a"
+    }
+    option = {
+        name = "sp_flavor_hol.2.b"
+    }
+}
+
+country_event {
+    id = sp_flavor_hol.3
+    title = "sp_flavor_hol.2.t"
+    desc = "sp_flavor_hol.3.d"
+    picture = DEBATE_REPUBLICAN_eventPicture
+
+    fire_only_once = yes
+
+    trigger = {
+        tag = NED
+    }
+
+    mean_time_to_happen = {
+        months = 24
+    }
+
+    option = {
+        name = "sp_flavor_hol.3.a"
+    }
+    option = {
+        name = "sp_flavor_hol.3.b"
+    }
+}
+
+country_event {
+    id = sp_flavor_hol.4
+    title = "sp_flavor_hol.4.t"
+    desc = "sp_flavor_hol.4.d"
+    picture = CITY_DEVELOPMENT_eventPicture
+
+    fire_only_once = yes
+
+    trigger = {
+        tag = NED
+    }
+
+    mean_time_to_happen = {
+        months = 24
+    }
+
+    option = {
+        name = "sp_flavor_hol.4.a"
+    }
+}
