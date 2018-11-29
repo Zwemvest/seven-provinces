@@ -383,7 +383,7 @@ country_event = {
 				}
 			}
 			country_event = {
-				sp_flavor_80yw.50
+				id = sp_flavor_80yw.50
 				days = 365
 			}
 		}
@@ -488,7 +488,7 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			country_event = {
-				sp_flavor_80yw.51
+				id = sp_flavor_80yw.51
 				days = 365
 			}
 		}
@@ -598,31 +598,131 @@ country_event = {
 country_event = {
 	id = sp_flavor_80yw.51
     title = "sp_flavor_80yw.51.t"
-    desc = "sp_flavor_80yw.51.d"
-    picture = CIVIL_WAR_eventPicture
-
-	major = yes
-    fire_only_once = yes
 	
-    # We shall watch these developments with great interest
+	is_triggered_only = yes
+
+	desc = {
+		trigger = { 
+		}
+		desc = "sp_flavor_80yw.51.d1"
+	}
+	desc = {
+		trigger = { 
+		}
+		desc = "sp_flavor_80yw.51.d2"
+	}
+    picture = CIVIL_WAR_eventPicture
+	
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = sp_flavor_80yw.52
+				days = 365
+			}
+		}
+	}
+
+    # Institute a Council of Troubles
     option = {
         name = "sp_flavor_80yw.51.a"
+
+		add_country_modifier = { 
+			name = sp_council_harsh
+			duration = 7300
+		}
+		low_countries_region = {
+			add_province_modifier = { 
+				name = sp_council_harsh_province
+				duration = 7300
+			}
+		}
+
+		set_country_flag = 80yw_council_harsh_flag
+		custom_tooltip = sp_flavor_80yw_antagonize
+    }
+    # Institute a Council of Supervision
+    option = {
+        name = "sp_flavor_80yw.50.b"
+		
+		#William of Orange flees the country
+		hidden_effect = {
+			country_event = {
+				id = sp_flavor_80yw.200
+				days = 100
+			}
+		}
+
+		add_country_modifier = { 
+			name = sp_council_concede
+			duration = 7300
+		}
+		low_countries_region = {
+			add_province_modifier = { 
+				name = sp_council_concede_province
+				duration = 7300
+			}
+		}
+		set_country_flag = 80yw_council_concede_flag
+		custom_tooltip = sp_flavor_80yw_placate
     }
 }
 
-# Beheading of Egmont and Horne
+# Egmont and Horne
 country_event = {
 	id = sp_flavor_80yw.52
     title = "sp_flavor_80yw.52.t"
-    desc = "sp_flavor_80yw.52.d"
-    picture = CIVIL_WAR_eventPicture
-
-	major = yes
-    fire_only_once = yes
 	
-    # We shall watch these developments with great interest
+	is_triggered_only = yes
+
+	desc = {
+		trigger = { 
+		}
+		desc = "sp_flavor_80yw.52.d1"
+	}
+	desc = {
+		trigger = { 
+		}
+		desc = "sp_flavor_80yw.52.d2"
+	}
+    picture = CIVIL_WAR_eventPicture
+	
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = sp_flavor_80yw.53
+				days = 365
+			}
+		}
+	}
+
+    # Behead them!
     option = {
-        name = "sp_flavor_80yw.52.a"
+        name = "sp_flavor_80yw.51.a"
+
+		add_country_modifier = { 
+			name = sp_eah_harsh
+			duration = 7300
+		}
+		low_countries_region = {
+			add_province_modifier = { 
+				name = sp_eah_harsh_province
+				duration = 7300
+			}
+		}
+
+		set_country_flag = 80yw_eah_harsh_flag
+		custom_tooltip = sp_flavor_80yw_antagonize
+    }
+    # Let them go free.
+    option = {
+        name = "sp_flavor_80yw.50.b"
+		
+		add_country_modifier = { 
+			name = sp_eah_concede
+			duration = 7300
+		}
+		set_country_flag = 80yw_eah_concede_flag
+		custom_tooltip = sp_flavor_80yw_placate
     }
 }
 
@@ -630,17 +730,62 @@ country_event = {
 country_event = {
 	id = sp_flavor_80yw.53
     title = "sp_flavor_80yw.53.t"
-    desc = "sp_flavor_80yw.53.d"
-    picture = CIVIL_WAR_eventPicture
-
-	major = yes
-    fire_only_once = yes
 	
-    # We shall watch these developments with great interest
+	is_triggered_only = yes
+
+	desc = {
+		trigger = { 
+		}
+		desc = "sp_flavor_80yw.53.d1"
+	}
+	desc = {
+		trigger = { 
+		}
+		desc = "sp_flavor_80yw.53.d2"
+	}
+    picture = CIVIL_WAR_eventPicture
+	
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = sp_flavor_80yw.60
+				days = 365
+			}
+		}
+	}
+
+    # Institute an additional tax!
     option = {
-        name = "sp_flavor_80yw.53.a"
+        name = "sp_flavor_80yw.51.a"
+
+		add_country_modifier = { 
+			name = sp_10p_harsh
+			duration = 7300
+		}
+		low_countries_region = {
+			add_province_modifier = { 
+				name = sp_10p_harsh_province
+				duration = 7300
+			}
+		}
+
+		set_country_flag = 80yw_10p_harsh_flag
+		custom_tooltip = sp_flavor_80yw_antagonize
+    }
+    # Relieve the Dutch of the tax effort.
+    option = {
+        name = "sp_flavor_80yw.50.b"
+		
+		add_country_modifier = { 
+			name = sp_10p_concede
+			duration = 7300
+		}
+		set_country_flag = 80yw_10p_concede_flag
+		custom_tooltip = sp_flavor_80yw_placate
     }
 }
+
+# HIDDEN EVENT: Event that decides wether the Dutch are loyal or not. 
 
 # Dutch proclaim loyalty
 
@@ -661,3 +806,58 @@ country_event = {
 # William of Orange
 
 # Proclaim William Stadtholder
+
+# William of Orange events
+# William of Orange flees the country 
+country_event = {
+	id = sp_flavor_80yw.200
+    title = "sp_flavor_80yw.200.t"
+	
+	is_triggered_only = yes
+
+	desc = "sp_flavor_80yw.200.d"
+    picture = CIVIL_WAR_eventPicture
+	
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = sp_flavor_80yw.201
+				days = 365
+			}
+		}
+	}
+
+    # William of Orange flees the country
+    option = {
+        name = "sp_flavor_80yw.200.a"
+    }
+}
+
+# William of Orange returns in order to restore order
+country_event = {
+	id = sp_flavor_80yw.201
+    title = "sp_flavor_80yw.201.t"
+	
+	is_triggered_only = yes
+
+	desc = "sp_flavor_80yw.201.d"
+    picture = CIVIL_WAR_eventPicture
+
+    # William of Orange tries to restore order in name of the king 
+    option = {
+        name = "sp_flavor_80yw.201.a"
+		random_owned_province = {
+			limit = { 
+				region = low_countries_region 
+			}
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 3
+				culture = dutch
+				win = yes
+				friend = NED
+				leader = "Willem van Oranje"
+			}
+		}
+	}
+}
