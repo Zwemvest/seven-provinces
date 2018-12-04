@@ -157,9 +157,8 @@ province_event {
     option = {
         name = sp_flavor_hol.5.b
         spawn_rebels = {
-            type = particularist_rebels
+            type = buckriders_rebels
             size = 1
-            culture = flemish
             leader = "Hugo van den Loonsche Duynen"
         }
     }
