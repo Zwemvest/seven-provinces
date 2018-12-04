@@ -123,7 +123,7 @@ country_event = {
     trigger = {
         current_age = age_of_reformation
 		is_year = 1550
-		NOT = { has_global_flag = 80yw_dutch_independance_started } 
+		NOT = { has_global_flag = sp_flavor_80yw_dutch_independence } 
 		NOT = { exists = NED }
 		is_free_or_tributary_trigger = yes
 		num_of_cities = 6
@@ -155,7 +155,12 @@ country_event = {
     }
 
     mean_time_to_happen = {
-        months = 2000
+        months = 2500
+		# Less aggressive against players :) 
+		modifier = {
+			factor = 2
+			was_player = yes
+		}
 		# Not protestant/reformed 
 		# (Event can still trigger for protestant/reformed nations owning catholic provinces!)
 		modifier = {
@@ -365,11 +370,11 @@ country_event = {
 	
 	immediate = {
 		hidden_effect = {		
-			set_country_flag = 80yw_dutch_independance
-			set_global_flag = 80yw_dutch_independance_started
+			set_country_flag = sp_flavor_80yw_begin
+			set_global_flag = sp_flavor_80yw_dutch_independence
 			every_country = {
 				limit = {
-					NOT = { has_country_flag = 80yw_dutch_independance }
+					NOT = { has_country_flag = sp_flavor_80yw_begin }
 					any_owned_province = {
 						OR = {
 							area = holland_area
@@ -400,7 +405,7 @@ country_event = {
 			}
 		}
 
-		set_country_flag = 80yw_begin_harsh_flag
+		set_country_flag = sp_flavor_80yw_begin_harsh_flag
 		custom_tooltip = sp_flavor_80yw_antagonize
     }
     # Promise concessions
@@ -414,7 +419,7 @@ country_event = {
 			}
 		}
 
-		set_country_flag = 80yw_begin_concede_flag
+		set_country_flag = sp_flavor_80yw_begin_concede_flag
 		custom_tooltip = sp_flavor_80yw_placate
     }
 }
@@ -487,6 +492,7 @@ country_event = {
 	
 	immediate = {
 		hidden_effect = {
+			set_country_flag = sp_flavor_80yw_alva
 			country_event = {
 				id = sp_flavor_80yw.51
 				days = 365
@@ -524,16 +530,16 @@ country_event = {
 		}	
  
 		add_country_modifier = { 
-			name = sp_alva_harsh
+			name = sp_flavor_80yw_alva_harsh
 			duration = 7300
 		}
 		low_countries_region = {
 			add_province_modifier = { 
-				name = sp_alva_harsh_province
+				name = sp_flavor_80yw_alva_harsh_province
 				duration = 7300
 			}
 		}
-		set_country_flag = 80yw_alva_harsh_flag
+		set_country_flag = sp_flavor_80yw_alva_harsh_flag
 		custom_tooltip = sp_flavor_80yw_antagonize
     }
     # Send a local general replace the governor and restore order in the Netherlands
@@ -563,33 +569,33 @@ country_event = {
 		}	
 	
 		add_country_modifier = { 
-			name = sp_alva_harsh
+			name = sp_flavor_80yw_alva_harsh
 			duration = 7300
 		}
 		low_countries_region = {
 			add_province_modifier = { 
-				name = sp_alva_harsh_province
+				name = sp_flavor_80yw_alva_harsh_province
 				duration = 7300
 			}
 		}
 
-		set_country_flag = 80yw_alva_harsh
+		set_country_flag = sp_flavor_80yw_alva_harsh
 		custom_tooltip = sp_flavor_80yw_antagonize
     }
     # Engage in dialogue
     option = {
         name = "sp_flavor_80yw.50.c"
 		add_country_modifier = { 
-			name = sp_alva_concede
+			name = sp_flavor_80yw_alva_concede
 			duration = 7300
 		}
 		low_countries_region = {
 			add_province_modifier = { 
-				name = sp_alva_concede_province
+				name = sp_flavor_80yw_alva_concede_province
 				duration = 7300
 			}
 		}
-		set_country_flag = 80yw_alva_concede_flag
+		set_country_flag = sp_flavor_80yw_alva_concede_flag
 		custom_tooltip = sp_flavor_80yw_placate
     }
 }
@@ -614,6 +620,7 @@ country_event = {
     picture = CIVIL_WAR_eventPicture
 	
 	immediate = {
+		set_country_flag = sp_flavor_80yw_council
 		hidden_effect = {
 			country_event = {
 				id = sp_flavor_80yw.52
@@ -627,22 +634,22 @@ country_event = {
         name = "sp_flavor_80yw.51.a"
 
 		add_country_modifier = { 
-			name = sp_council_harsh
+			name = sp_flavor_80yw_council_harsh
 			duration = 7300
 		}
 		low_countries_region = {
 			add_province_modifier = { 
-				name = sp_council_harsh_province
+				name = sp_flavor_80yw_council_harsh_province
 				duration = 7300
 			}
 		}
 
-		set_country_flag = 80yw_council_harsh_flag
+		set_country_flag = sp_flavor_80yw_council_harsh_flag
 		custom_tooltip = sp_flavor_80yw_antagonize
     }
     # Institute a Council of Supervision
     option = {
-        name = "sp_flavor_80yw.50.b"
+        name = "sp_flavor_80yw.51.b"
 		
 		#William of Orange flees the country
 		hidden_effect = {
@@ -653,16 +660,16 @@ country_event = {
 		}
 
 		add_country_modifier = { 
-			name = sp_council_concede
+			name = sp_flavor_80yw_council_concede
 			duration = 7300
 		}
 		low_countries_region = {
 			add_province_modifier = { 
-				name = sp_council_concede_province
+				name = sp_flavor_80yw_council_concede_province
 				duration = 7300
 			}
 		}
-		set_country_flag = 80yw_council_concede_flag
+		set_country_flag = sp_flavor_80yw_council_concede_flag
 		custom_tooltip = sp_flavor_80yw_placate
     }
 }
@@ -687,6 +694,7 @@ country_event = {
     picture = CIVIL_WAR_eventPicture
 	
 	immediate = {
+		set_country_flag = sp_flavor_80yw_eah
 		hidden_effect = {
 			country_event = {
 				id = sp_flavor_80yw.53
@@ -697,31 +705,31 @@ country_event = {
 
     # Behead them!
     option = {
-        name = "sp_flavor_80yw.51.a"
+        name = "sp_flavor_80yw.52.a"
 
 		add_country_modifier = { 
-			name = sp_eah_harsh
+			name = sp_flavor_80yw_eah_harsh
 			duration = 7300
 		}
 		low_countries_region = {
 			add_province_modifier = { 
-				name = sp_eah_harsh_province
+				name = sp_flavor_80yw_eah_harsh_province
 				duration = 7300
 			}
 		}
 
-		set_country_flag = 80yw_eah_harsh_flag
+		set_country_flag = sp_flavor_80yw_eah_harsh_flag
 		custom_tooltip = sp_flavor_80yw_antagonize
     }
     # Let them go free.
     option = {
-        name = "sp_flavor_80yw.50.b"
+        name = "sp_flavor_80yw.52.b"
 		
 		add_country_modifier = { 
-			name = sp_eah_concede
+			name = sp_flavor_80yw_eah_concede
 			duration = 7300
 		}
-		set_country_flag = 80yw_eah_concede_flag
+		set_country_flag = sp_flavor_80yw_eah_concede_flag
 		custom_tooltip = sp_flavor_80yw_placate
     }
 }
@@ -744,64 +752,260 @@ country_event = {
 		desc = "sp_flavor_80yw.53.d2"
 	}
     picture = CIVIL_WAR_eventPicture
-	
+
+
 	immediate = {
-		hidden_effect = {
-			country_event = {
-				id = sp_flavor_80yw.60
-				days = 365
-			}
-		}
+		set_country_flag = sp_flavor_80yw_10p
 	}
 
     # Institute an additional tax!
     option = {
-        name = "sp_flavor_80yw.51.a"
+        name = "sp_flavor_80yw.53.a"
 
 		add_country_modifier = { 
-			name = sp_10p_harsh
+			name = sp_flavor_80yw_10p_harsh
 			duration = 7300
 		}
 		low_countries_region = {
 			add_province_modifier = { 
-				name = sp_10p_harsh_province
+				name = sp_flavor_80yw_10p_harsh_province
 				duration = 7300
 			}
 		}
 
-		set_country_flag = 80yw_10p_harsh_flag
+		set_country_flag = sp_flavor_80yw_10p_harsh_flag
 		custom_tooltip = sp_flavor_80yw_antagonize
     }
     # Relieve the Dutch of the tax effort.
     option = {
-        name = "sp_flavor_80yw.50.b"
+        name = "sp_flavor_80yw.53.b"
 		
 		add_country_modifier = { 
-			name = sp_10p_concede
+			name = sp_flavor_80yw_10p_concede
 			duration = 7300
 		}
-		set_country_flag = 80yw_10p_concede_flag
+		set_country_flag = sp_flavor_80yw_10p_concede_flag
 		custom_tooltip = sp_flavor_80yw_placate
     }
 }
 
-# HIDDEN EVENT: Event that decides wether the Dutch are loyal or not. 
-
 # Dutch proclaim loyalty
+country_event = {
+	id = sp_flavor_80yw.60
+	
+	id = sp_flavor_80yw.60
+    title = "sp_flavor_80yw.60.t"
 
-# Dutch declare independance
+	desc = "sp_flavor_80yw.60.d"
+
+	trigger = {
+		has_country_flag = sp_flavor_80yw_begin
+		has_country_flag = sp_flavor_80yw_alva
+		has_country_flag = sp_flavor_80yw_council
+		has_country_flag = sp_flavor_80yw_eah
+		has_country_flag = sp_flavor_80yw_10p
+		NOT = {
+			has_country_flag = sp_flavor_80yw_begin_harsh
+			has_country_flag = sp_flavor_80yw_alva_harsh
+			has_country_flag = sp_flavor_80yw_council_harsh
+			has_country_flag = sp_flavor_80yw_eah_harsh
+			has_country_flag = sp_flavor_80yw_10p_harsh
+		}
+		NOT = {
+			has_country_flag = sp_flavor_80yw_dutch_independence_phase2
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = sp_flavor_80yw_dutch_independence_phase2
+		}
+	}
+
+	#Crisis averted
+    option = {
+        name = "sp_flavor_80yw.60.a"
+
+		custom_tooltip = sp_flavor_80yw_antagonize
+    }
+}
 
 # Dutch seek allies from abroad...
+country_event = {
+	id = sp_flavor_80yw.61
+	
+	id = sp_flavor_80yw.61
+    title = "sp_flavor_80yw.61.t"
+	
+	desc = "sp_flavor_80yw.61.d"
 
-# Dutch ask France
+	trigger = {
+		has_country_flag = sp_flavor_80yw_begin
+		has_country_flag = sp_flavor_80yw_alva
+		has_country_flag = sp_flavor_80yw_council
+		has_country_flag = sp_flavor_80yw_eah
+		has_country_flag = sp_flavor_80yw_10p
+		NOT = {
+			has_country_flag = sp_flavor_80yw_begin_concede
+			has_country_flag = sp_flavor_80yw_alva_concede
+			has_country_flag = sp_flavor_80yw_council_concede
+			has_country_flag = sp_flavor_80yw_eah_concede
+			has_country_flag = sp_flavor_80yw_10p_concede
+		}
+		NOT = {
+			has_country_flag = sp_flavor_80yw_dutch_independence_phase2
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = sp_flavor_80yw_dutch_independence_phase2
+			FRA = {
+				country_event = {
+					id = sp_flavor_80yw.62
+				}
+			}
+			GBR = {
+				country_event = {
+					id = sp_flavor_80yw.62
+				}
+			}
+			if {
+				limit = { 
+					NOT = { exists = GBR }
+				}
+				ENG = {
+					country_event = {
+						id = sp_flavor_80yw.62
+					}
+				}
+			}
+			SPA = {
+				country_event = {
+					id = sp_flavor_80yw.62
+				}
+			}
+			if = {
+				limit = { 
+					NOT = { exists = SPA }
+				}
+				CAS = {
+					country_event = {
+						id = sp_flavor_80yw.62
+					}
+				}
+			}
+			emperor = {
+				country_event = {
+					id = sp_flavor_80yw.62
+				}
+			}
+			TUR = {
+				country_event = {
+					id = sp_flavor_80yw.62
+				}
+			}
+			every_rival_country = { 
+				country_event = {
+					id = sp_flavor_80yw.62
+				}
+			}
+		}
+	}
 
-# Dutch ask Britain
+	# How dare they? Blasted traitors! 
+    option = {
+        name = "sp_flavor_80yw.61.a"
 
-# Dutch ask Spain
+		custom_tooltip = sp_flavor_80yw_antagonize
+    }
+}
 
-# Dutch ask Emperor
+# Dutch ask for aid 
+country_event = {
+	id = sp_flavor_80yw.62
+	
+	id = sp_flavor_80yw.62
+    title = "sp_flavor_80yw.62.t"
+	
+	desc = {
+		trigger = { 
+			tag = FRA
+		}
+		desc = "sp_flavor_80yw.62.d1"
+	}
+	desc = {
+		trigger = { 
+			or = {
+				tag = ENG
+				tag = GBR
+			}
+		}
+		desc = "sp_flavor_80yw.62.d2"
+	}
+	desc = {
+		trigger = { 
+			or = {
+				tag = CAS
+				tag = SPA
+			}
+		}
+		desc = "sp_flavor_80yw.62.d3"
+	}
+	desc = {
+		trigger = { 
+			emperor = yes
+		}
+		desc = "sp_flavor_80yw.62.d3"
+	}
+	desc = {
+		trigger = { 
+			tag = TUR
+		}
+		desc = "sp_flavor_80yw.62.d5"
+	}
+	desc = {
+		trigger = { 
+			not = {
+				or = {
+					tag = FRA
+					tag = ENG
+					tag = GBR
+					tag = CAS
+					tag = SPA
+					emperor = yes
+					tag = TUR
+				}
+			}
+		}
+		desc = "sp_flavor_80yw.62.d6"
+	}
 
-# Dutch ask rivals
+	trigger = {
+		NOT = {
+			has_country_flag = sp_flavor_80yw_dutch_independence_phase2
+		}
+	}
+
+	# Ally
+    option = {
+        name = "sp_flavor_80yw.62.a"
+
+		custom_tooltip = sp_flavor_80yw_ally
+    }
+	# Help
+    option = {
+        name = "sp_flavor_80yw.62.b"
+
+		custom_tooltip = sp_flavor_80yw_help
+    }
+	# Ignore
+    option = {
+        name = "sp_flavor_80yw.62.c"
+
+		custom_tooltip = sp_flavor_80yw_ignore
+    }
+}
+
+# Dutch declare independance
 
 # William of Orange
 

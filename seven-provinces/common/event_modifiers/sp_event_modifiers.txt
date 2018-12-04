@@ -6,29 +6,29 @@ national_bank_interest2 = {
 	interest = -0.5
 }
 
-sp_begin_harsh_province = {
+sp_flavor_80yw_begin_harsh_province = {
 	local_unrest = 5
 	local_autonomy = -0.05
 	local_state_maintenance_modifier = -0.25
 }
 
-sp_begin_concede_province = {
+sp_flavor_80yw_begin_concede_province = {
 	local_autonomy = 0.05
 	local_state_maintenance_modifier = 0.5
 }
 
-sp_alva_harsh = {
+sp_flavor_80yw_alva_harsh = {
 	tolerance_heretic = -2
 	papal_influence = 2
 	legitimacy = 0.5
 }
 
-sp_alva_harsh_province = {
+sp_flavor_80yw_alva_harsh_province = {
 	local_unrest = 5
 	local_missionary_strength = 0.1
 }
 
-sp_alva_concede = {
+sp_flavor_80yw_alva_concede = {
 	tolerance_heretic = 2
 	tolerance_own = -2
 	global_heretic_missionary_strength = -0.05
@@ -36,45 +36,45 @@ sp_alva_concede = {
 	legitimacy = -1
 }
 
-sp_alva_concede_province = {
+sp_flavor_80yw_alva_concede_province = {
 	local_missionary_strength = -0.1
 	local_culture_conversion_cost = 0.5
 	religious_conversion_resistance = -0.2
 }
 
-sp_council_harsh = {
+sp_flavor_80yw_council_harsh = {
 	global_autonomy = -0.05
 	harsh_treatment_cost = -0.2
 }
 
-sp_council_harsh_province = {
+sp_flavor_80yw_council_harsh_province = {
 	local_unrest = 5
 	local_autonomy = -0.05
 	local_manpower_modifier = 0.25
 }
 
-sp_council_concede = {
+sp_flavor_80yw_council_concede = {
 	global_autonomy = 0.05	
 	harsh_treatment_cost = 0.5
 }
 
-sp_council_concede_province = {
+sp_flavor_80yw_council_concede_province = {
 	local_autonomy = 0.1
 	local_manpower_modifier = -0.25	
 	local_regiment_cost = 0.5
 	regiment_recruit_speed = 0.5
 }
 
-sp_eah_harsh = {
+sp_flavor_80yw_eah_harsh = {
 	global_unrest = -2
 	stability_cost_modifier = -0.1
 }
 
-sp_eah_harsh_province = {
+sp_flavor_80yw_eah_harsh_province = {
 	local_unrest = 5
 }
 
-sp_eah_concede = {
+sp_flavor_80yw_eah_concede = {
 	stability_cost_modifier = 0.2
 	years_of_nationalism = 5
 }
