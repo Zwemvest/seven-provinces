@@ -126,3 +126,40 @@ country_event {
         remove_country_modifier = tulip_mania
     }
 }
+
+province_event {
+    id = sp_flavor_hol.5
+    title = "sp_flavor_hol.5.t"
+    desc = "sp_flavor_hol.5.d"
+    picture = HORDE_ON_HORSEBACK_eventPicture
+
+    trigger {
+        OR = {
+            province_id = 95
+            province_id = 1744
+            province_id = 92
+            province_id = 2974
+            province_id = 1742
+            province_id = 1878
+        }
+    }
+
+    mean_time_to_happen = {
+        months = 2400
+    }
+
+    option = {
+        name = sp_flavor_hol.5.a
+        add_devastation = 20
+        add_stability = -1
+    }
+
+    option = {
+        name = sp_flavor_hol.5.b
+        spawn_rebels = {
+            type = buckriders_rebels
+            size = 1
+            leader = "Hugo van den Loonsche Duynen"
+        }
+    }
+}
