@@ -78,3 +78,15 @@ sp_flavor_80yw_eah_concede = {
 	stability_cost_modifier = 0.2
 	years_of_nationalism = 5
 }
+
+sp_flavor_80yw_10p_harsh = {
+}
+
+sp_flavor_80yw_10p_harsh_province = {
+}
+
+sp_flavor_80yw_10p_concede = {
+}
+
+sp_flavor_80yw_10p_concede_province = {
+}

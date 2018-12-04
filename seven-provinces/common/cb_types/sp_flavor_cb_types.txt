@@ -1,0 +1,20 @@
+# Independence War
+cb_sp_flavor_80yw_independence_war = {
+	exclusive = yes
+	independence = yes
+	# 80 Years War. Neither the Dutch nor the Spanish are really anxious to make any kind of peace.
+	ai_peace_desire = -20
+
+	prerequisites = {
+		is_subject_other_than_tributary_trigger = yes
+		is_subject_of = FROM
+		NOT = { is_colonial_nation_of = FROM }
+		OR = {
+			NOT = { has_reform = daimyo }
+			NOT = { from = { has_reform = shogunate } }
+		}
+		is_revolution_target = no
+	}
+
+	war_goal = defend_capital_independence
+}

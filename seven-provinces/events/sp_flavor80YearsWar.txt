@@ -369,6 +369,7 @@ country_event = {
     }
 	
 	immediate = {
+		#TODO add stuff for vassals in the Dutch Republic
 		hidden_effect = {		
 			set_country_flag = sp_flavor_80yw_begin
 			set_global_flag = sp_flavor_80yw_dutch_independence
@@ -400,7 +401,7 @@ country_event = {
 		
 		low_countries_region = {
 			add_province_modifier = { 
-				name = sp_begin_harsh_province
+				name = sp_flavor_80yw_begin_harsh_province
 				duration = 7300
 			}
 		}
@@ -414,7 +415,7 @@ country_event = {
 		
 		low_countries_region = {
 			add_province_modifier = { 
-				name = sp_begin_concede_province
+				name = sp_flavor_80yw_begin_concede_province
 				duration = 7300
 			}
 		}
@@ -465,9 +466,7 @@ country_event = {
 country_event = {
 	id = sp_flavor_80yw.50
     title = "sp_flavor_80yw.50.t"
-	
-	is_triggered_only = yes
-
+    picture = CIVIL_WAR_eventPicture
 	desc = {
 		trigger = { 
 			OR = { 
@@ -488,8 +487,9 @@ country_event = {
 		}
 		desc = "sp_flavor_80yw.50.d2"
 	}
-    picture = CIVIL_WAR_eventPicture
-	
+
+	is_triggered_only = yes
+
 	immediate = {
 		hidden_effect = {
 			set_country_flag = sp_flavor_80yw_alva
@@ -604,9 +604,7 @@ country_event = {
 country_event = {
 	id = sp_flavor_80yw.51
     title = "sp_flavor_80yw.51.t"
-	
-	is_triggered_only = yes
-
+    picture = CIVIL_WAR_eventPicture
 	desc = {
 		trigger = { 
 		}
@@ -617,8 +615,9 @@ country_event = {
 		}
 		desc = "sp_flavor_80yw.51.d2"
 	}
-    picture = CIVIL_WAR_eventPicture
 	
+	is_triggered_only = yes
+
 	immediate = {
 		set_country_flag = sp_flavor_80yw_council
 		hidden_effect = {
@@ -678,9 +677,6 @@ country_event = {
 country_event = {
 	id = sp_flavor_80yw.52
     title = "sp_flavor_80yw.52.t"
-	
-	is_triggered_only = yes
-
 	desc = {
 		trigger = { 
 		}
@@ -692,6 +688,8 @@ country_event = {
 		desc = "sp_flavor_80yw.52.d2"
 	}
     picture = CIVIL_WAR_eventPicture
+	
+	is_triggered_only = yes
 	
 	immediate = {
 		set_country_flag = sp_flavor_80yw_eah
@@ -738,9 +736,7 @@ country_event = {
 country_event = {
 	id = sp_flavor_80yw.53
     title = "sp_flavor_80yw.53.t"
-	
-	is_triggered_only = yes
-
+    picture = CIVIL_WAR_eventPicture
 	desc = {
 		trigger = { 
 		}
@@ -751,8 +747,8 @@ country_event = {
 		}
 		desc = "sp_flavor_80yw.53.d2"
 	}
-    picture = CIVIL_WAR_eventPicture
-
+	
+	is_triggered_only = yes
 
 	immediate = {
 		set_country_flag = sp_flavor_80yw_10p
@@ -784,6 +780,12 @@ country_event = {
 			name = sp_flavor_80yw_10p_concede
 			duration = 7300
 		}
+		low_countries_region = {
+			add_province_modifier = { 
+				name = sp_flavor_80yw_10p_concede_province
+				duration = 7300
+			}
+		}
 		set_country_flag = sp_flavor_80yw_10p_concede_flag
 		custom_tooltip = sp_flavor_80yw_placate
     }
@@ -792,12 +794,10 @@ country_event = {
 # Dutch proclaim loyalty
 country_event = {
 	id = sp_flavor_80yw.60
-	
-	id = sp_flavor_80yw.60
     title = "sp_flavor_80yw.60.t"
-
 	desc = "sp_flavor_80yw.60.d"
-
+    picture = CIVIL_WAR_eventPicture
+	
 	trigger = {
 		has_country_flag = sp_flavor_80yw_begin
 		has_country_flag = sp_flavor_80yw_alva
@@ -815,6 +815,16 @@ country_event = {
 			has_country_flag = sp_flavor_80yw_dutch_independence_phase2
 		}
 	}
+
+	mean_time_to_happen = {
+		months = 200
+		#TODO invullen!
+		modifier = {
+			factor = 0.75
+			accepted_culture = dutch
+		}
+	}
+
 	immediate = {
 		hidden_effect = {
 			set_country_flag = sp_flavor_80yw_dutch_independence_phase2
@@ -829,14 +839,12 @@ country_event = {
     }
 }
 
-# Dutch seek allies from abroad...
+# Dutch prepare for rebellion
 country_event = {
 	id = sp_flavor_80yw.61
-	
-	id = sp_flavor_80yw.61
     title = "sp_flavor_80yw.61.t"
-	
 	desc = "sp_flavor_80yw.61.d"
+    picture = CIVIL_WAR_eventPicture
 
 	trigger = {
 		has_country_flag = sp_flavor_80yw_begin
@@ -855,6 +863,16 @@ country_event = {
 			has_country_flag = sp_flavor_80yw_dutch_independence_phase2
 		}
 	}
+
+	mean_time_to_happen = {
+		months = 200
+		#TODO invullen!
+		modifier = {
+			factor = 0.75
+			NOT = { accepted_culture = dutch }
+		}
+	}
+
 	immediate = {
 		hidden_effect = {
 			set_country_flag = sp_flavor_80yw_dutch_independence_phase2
@@ -903,9 +921,9 @@ country_event = {
 					id = sp_flavor_80yw.62
 				}
 			}
-			every_rival_country = { 
+			every_enemy_country = { 
 				country_event = {
-					id = sp_flavor_80yw.62
+					id = sp_flavor_80yw.63
 				}
 			}
 		}
@@ -914,18 +932,19 @@ country_event = {
 	# How dare they? Blasted traitors! 
     option = {
         name = "sp_flavor_80yw.61.a"
-
-		custom_tooltip = sp_flavor_80yw_antagonize
+		hidden_effect = {
+			country_event = {
+				id = sp_flavor_80yw.64
+			}
+		}
     }
 }
 
 # Dutch ask for aid 
 country_event = {
 	id = sp_flavor_80yw.62
-	
-	id = sp_flavor_80yw.62
     title = "sp_flavor_80yw.62.t"
-	
+    picture = CIVIL_WAR_eventPicture
 	desc = {
 		trigger = { 
 			tag = FRA
@@ -934,7 +953,7 @@ country_event = {
 	}
 	desc = {
 		trigger = { 
-			or = {
+			OR = {
 				tag = ENG
 				tag = GBR
 			}
@@ -943,7 +962,7 @@ country_event = {
 	}
 	desc = {
 		trigger = { 
-			or = {
+			OR = {
 				tag = CAS
 				tag = SPA
 			}
@@ -952,9 +971,9 @@ country_event = {
 	}
 	desc = {
 		trigger = { 
-			emperor = yes
+			is_emperor = yes
 		}
-		desc = "sp_flavor_80yw.62.d3"
+		desc = "sp_flavor_80yw.62.d4"
 	}
 	desc = {
 		trigger = { 
@@ -962,22 +981,8 @@ country_event = {
 		}
 		desc = "sp_flavor_80yw.62.d5"
 	}
-	desc = {
-		trigger = { 
-			not = {
-				or = {
-					tag = FRA
-					tag = ENG
-					tag = GBR
-					tag = CAS
-					tag = SPA
-					emperor = yes
-					tag = TUR
-				}
-			}
-		}
-		desc = "sp_flavor_80yw.62.d6"
-	}
+
+	is_triggered_only = yes
 
 	trigger = {
 		NOT = {
@@ -990,12 +995,50 @@ country_event = {
         name = "sp_flavor_80yw.62.a"
 
 		custom_tooltip = sp_flavor_80yw_ally
+		set_country_flag = sp_flavor_80yw_ally
     }
 	# Help
     option = {
         name = "sp_flavor_80yw.62.b"
 
 		custom_tooltip = sp_flavor_80yw_help
+		set_country_flag = sp_flavor_80yw_help
+    }
+	# Ignore
+    option = {
+        name = "sp_flavor_80yw.62.c"
+
+		custom_tooltip = sp_flavor_80yw_ignore
+    }
+}
+
+# Dutch ask for aid 
+country_event = {
+	id = sp_flavor_80yw.63
+    title = "sp_flavor_80yw.62.t"
+    picture = CIVIL_WAR_eventPicture
+	desc = "sp_flavor_80yw.63.d"
+
+	is_triggered_only = yes
+	trigger = {
+		NOT = {
+				has_country_flag = sp_flavor_80yw_dutch_independence_phase2
+			}
+	}
+
+	# Ally
+    option = {
+        name = "sp_flavor_80yw.62.a"
+
+		custom_tooltip = sp_flavor_80yw_ally
+		set_country_flag = sp_flavor_80yw_ally
+    }
+	# Help
+    option = {
+        name = "sp_flavor_80yw.62.b"
+
+		custom_tooltip = sp_flavor_80yw_help
+		set_country_flag = sp_flavor_80yw_help
     }
 	# Ignore
     option = {
@@ -1006,10 +1049,274 @@ country_event = {
 }
 
 # Dutch declare independance
+country_event = {
+	id = sp_flavor_80yw.64
+	title = "sp_flavor_80yw.64.t"
+	desc = "sp_flavor_80yw.64.d"
+	picture = ANGRY_MOB_eventPicture
 
-# William of Orange
+	major = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					region = low_countries_region
+					OR = {
+						culture = dutch
+						culture = flemish
+						culture = frisian
+						is_core = NED
+					}
+					is_capital = no
+				}
+				discover_country = NED
+				add_core = NED
+			}
+			release = NED
+			# All Dutch, Frisian, and Flemish provinces are ceded. Add claims to all others.
+			every_owned_province = {
+				limit = {
+					region = low_countries_region
+				}
+				add_claim = NED
+			}
+			#every_owned_province = {
+			#	limit = {
+			#		region = low_countries_region
+			#	}
+			#	every_core_country = { 
+			#		limit = { 
+			#			NOT = { tag = NED }
+			#			culture = dutch
+			#		}
+			#		PREV = {
+			#			remove_core = PREV
+			#		}
+			#	}
+			#}
+			NED = {
+				define_ruler = {
+					name = "Staten-Generaal"
+					dip = 3
+					adm = 3
+					mil = 3					
+					fixed = yes
+					regency = yes
+				}
+				set_government_rank	= 2
+				add_accepted_culture = frisian
+				add_accepted_culture = flemish
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.6
+						cavalry = 0.3
+						artillery = 0.1
+					}
+				}
+				random_owned_province = {
+					limit = {
+						has_port = yes
+					}
+					build_to_forcelimit = {
+						heavy_ship = 0.3
+						light_ship = 0.3
+						transport = 0.2
+					}
+				}
+				every_owned_province = {
+					every_core_country = {
+						limit = {
+							primary_culture = dutch
+							NOT = {
+								tag = NED
+							} 
+						}
+						PREV = {
+							remove_core = PREV
+						}
+					}
+				}
+				add_manpower = 10
+				add_sailors = 5000
+				add_treasury = 1500
+				add_adm_power = 250
+				add_dip_power = 250
+				add_mil_power = 250
+				define_general = {
+					name = "Willem van Oranje"
+					shock = 3
+					fire = 3
+					manuever = 4
+					siege = 2
+				}
+				every_country = {
+					limit = { has_country_flag = sp_flavor_80yw_ally }
+					reverse_add_opinion = {
+						who = NED
+						modifier = ned_ally_during_80yw
+					}
+					add_opinion = {
+						who = NED
+						modifier = ned_ally_during_80yw
+					}
+					add_trust = {
+						who = NED
+						value = 25
+						mutual = yes
+					}
+					create_alliance = NED
+				}
+				every_country = {
+					limit = { has_country_flag = sp_flavor_80yw_help }
+					country_event = {
+						id = sp_flavor_80yw.65
+					}
+				}
+				every_country = {
+					# TODO Every country with a province in the Netherlands, but not Dutch.
+					limit = {  }
+				}
+				declare_war_with_cb = {
+					who = ROOT
+					casus_belli = cb_sp_flavor_80yw_independence_war
+				}
+			}
+			every_country = {
+				limit = {
+					NOT = { tag = ROOT }
+					NOT = { tag = NED }
+					any_owned_province = {
+						region = low_countries_region
+					}
+				}
+				country_event = { id = sp_flavor_80yw.65 days = 10 }
+			}
+		}
+	}
+	
+	option = {
+		name = "sp_flavor_80yw.64.a"
+		switch_tag = NED
+	}
+	option = {
+		name = "sp_flavor_80yw.64.b"
+	}
+}
 
-# Proclaim William Stadtholder
+# What aid do we offer (TODO: FILL)
+country_event = {
+	id = sp_flavor_80yw.65
+    title = "sp_flavor_80yw.65.t"
+	desc = "sp_flavor_80yw.65.d1"
+	picture = ANGRY_MOB_eventPicture
+	is_triggered_only = yes
+
+	# Do everything we can to help them
+    option = {
+        name = "sp_flavor_80yw.65.a"
+		reverse_add_opinion = {
+			who = NED
+			modifier = ned_support_during_80yw  
+		}
+		add_trust = {
+			who = NED
+			value = 10
+			mutual = yes
+		}
+    }
+	# Support them militarily
+    option = {
+        name = "sp_flavor_80yw.65.b"
+		reverse_add_opinion = {
+			who = NED
+			modifier = ned_strong_support_during_80yw   
+		}
+    }
+	# Support them financially
+    option = {
+        name = "sp_flavor_80yw.65.c"
+		reverse_add_opinion = {
+			who = NED
+			modifier = ned_support_during_80yw  
+		}
+    }
+	# Send a token military force
+    option = {
+        name = "sp_flavor_80yw.65.d2"
+		reverse_add_opinion = {
+			who = NED
+			modifier = ned_token_support_during_80yw  
+		}
+    }
+	# Send a token donation
+    option = {
+        name = "sp_flavor_80yw.65.e"
+		reverse_add_opinion = {
+			who = NED
+			modifier = ned_token_support_during_80yw  
+		}
+    }
+	# We've changed our mind
+    option = {
+        name = "sp_flavor_80yw.65.f"
+		reverse_add_opinion = {
+			who = NED
+			modifier = ned_empty_promises_during_80yw  
+		}
+    }
+}
+
+# Countries with provinces in the low countries get a different event (TODO: FILL)
+country_event = {
+	id = sp_flavor_80yw.66
+    title = "sp_flavor_80yw.66.t"
+	desc = "sp_flavor_80yw.66.d1"
+	picture = ANGRY_MOB_eventPicture
+	is_triggered_only = yes
+
+	# Join the Dutch (Dutch/Frisian/Flemish)
+    option = {
+        name = "sp_flavor_80yw.66.a"
+		reverse_add_opinion = {
+			who = NED
+			modifier = ned_support_during_80yw  
+		}
+		add_trust = {
+			who = NED
+			value = 10
+			mutual = yes
+		}
+    }
+	# Support the Dutch, cede provinces (not Dutch/Frisian/Flemish, but owns provinces)
+    option = {
+        name = "sp_flavor_80yw.66.b"
+		reverse_add_opinion = {
+			who = NED
+			modifier = ned_strong_support_during_80yw   
+		}
+    }
+	# Support the Dutch, don't cede provinces
+    option = {
+        name = "sp_flavor_80yw.66.c"
+		reverse_add_opinion = {
+			who = NED
+			modifier = ned_support_during_80yw  
+		}
+    }
+	# Do nothing
+    option = {
+        name = "sp_flavor_80yw.66.d2"
+		reverse_add_opinion = {
+			who = NED
+			modifier = ned_token_support_during_80yw  
+		}
+    }
+}
+
+# Dutch countries with provinces in the low countries get a "Join or die" event (TODO)
 
 # William of Orange events
 # William of Orange flees the country 
@@ -1065,3 +1372,6 @@ country_event = {
 		}
 	}
 }
+
+# TODO: Hunt for a monarch events
+# Proclaim William Stadtholder

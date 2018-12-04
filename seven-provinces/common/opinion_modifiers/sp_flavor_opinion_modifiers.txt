@@ -1,0 +1,29 @@
+ned_ally_during_80yw = {
+	opinion = 50
+	years = 50
+	yearly_decay = 1
+}
+
+ned_strong_support_during_80yw = {
+	opinion = 50
+	years = 25
+	yearly_decay = 2
+}
+
+ned_support_during_80yw = {
+	opinion = 25
+	years = 25
+	yearly_decay = 1
+}
+
+ned_token_support_during_80yw = {
+	opinion = 10
+	years = 10
+	yearly_decay = 1
+}
+
+ned_empty_promises_during_80yw = {
+	opinion = -25
+	years = 25
+	yearly_decay = 1
+}
