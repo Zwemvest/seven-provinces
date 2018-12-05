@@ -16,12 +16,6 @@ ned_support_during_80yw = {
 	yearly_decay = 1
 }
 
-ned_token_support_during_80yw = {
-	opinion = 10
-	years = 10
-	yearly_decay = 1
-}
-
 ned_empty_promises_during_80yw = {
 	opinion = -25
 	years = 25
