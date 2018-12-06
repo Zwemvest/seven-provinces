@@ -5,6 +5,11 @@
 ########################################
 
 
+#TODO add edge-cases for vassals of nation that trigger the Dutch revolt
+#TODO add edge-cases for vassals of other nations with provinces in the Netherlands
+#TODO add abort-scenario in case a country triggered the Dutch revolt, but loses all provinces in the Netherlands
+#TODO add edge cases in case the Netherlands is formed while the Dutch revolt is ongoing
+
 namespace = sp_flavor_80yw
 normal_or_historical_nations = yes
 
@@ -492,6 +497,7 @@ country_event = {
 
 	immediate = {
 		hidden_effect = {
+			# Next event in chain (Blood Council)
 			set_country_flag = sp_flavor_80yw_alva
 			country_event = {
 				id = sp_flavor_80yw.51
@@ -606,12 +612,22 @@ country_event = {
     title = "sp_flavor_80yw.51.t"
     picture = CIVIL_WAR_eventPicture
 	desc = {
-		trigger = { 
+		trigger = { 	
+			OR = { 
+				tag = CAS 
+				tag = SPA
+			}
 		}
 		desc = "sp_flavor_80yw.51.d1"
 	}
 	desc = {
 		trigger = { 
+			NOT = {
+				OR = { 
+					tag = CAS 
+					tag = SPA
+				}
+			}
 		}
 		desc = "sp_flavor_80yw.51.d2"
 	}
@@ -621,9 +637,15 @@ country_event = {
 	immediate = {
 		set_country_flag = sp_flavor_80yw_council
 		hidden_effect = {
+			# Next event in chain (Egmont and van Horne)
 			country_event = {
 				id = sp_flavor_80yw.52
 				days = 365
+			}
+			#William of Orange flees the country
+			country_event = {
+				id = sp_flavor_80yw.200
+				days = 100
 			}
 		}
 	}
@@ -650,14 +672,6 @@ country_event = {
     option = {
         name = "sp_flavor_80yw.51.b"
 		
-		#William of Orange flees the country
-		hidden_effect = {
-			country_event = {
-				id = sp_flavor_80yw.200
-				days = 100
-			}
-		}
-
 		add_country_modifier = { 
 			name = sp_flavor_80yw_council_concede
 			duration = 7300
@@ -679,11 +693,15 @@ country_event = {
     title = "sp_flavor_80yw.52.t"
 	desc = {
 		trigger = { 
+			has_matching_religion = catholic
 		}
 		desc = "sp_flavor_80yw.52.d1"
 	}
 	desc = {
 		trigger = { 
+			NOT = {
+				has_matching_religion = catholic
+			}
 		}
 		desc = "sp_flavor_80yw.52.d2"
 	}
@@ -693,6 +711,7 @@ country_event = {
 	
 	immediate = {
 		set_country_flag = sp_flavor_80yw_eah
+		# Next event in chain (10e Penning)
 		hidden_effect = {
 			country_event = {
 				id = sp_flavor_80yw.53
@@ -719,7 +738,7 @@ country_event = {
 		set_country_flag = sp_flavor_80yw_eah_harsh_flag
 		custom_tooltip = sp_flavor_80yw_antagonize
     }
-    # Let them go free.
+    # Order their release!
     option = {
         name = "sp_flavor_80yw.52.b"
 		
@@ -828,9 +847,13 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			set_country_flag = sp_flavor_80yw_dutch_independence_phase2
+			country_event = {
+				id = sp_flavor_80yw.201
+				days = 365
+			}
 		}
 	}
-
+	
 	#Crisis averted
     option = {
         name = "sp_flavor_80yw.60.a"
@@ -1015,6 +1038,7 @@ country_event = {
 	}
 
 	# Promise provinces and alliance
+	# TODO Set AI willingness to 0
     option = {
 		trigger = {
 			any_owned_province = {
@@ -1027,6 +1051,7 @@ country_event = {
 		set_country_flag = sp_flavor_80yw_ally
     }
 	# Ally
+	# TODO Decrease AI willingness
     option = {
 		trigger = {
 			NOT = { 
@@ -1041,6 +1066,7 @@ country_event = {
 		set_country_flag = sp_flavor_80yw_ally
     }
 	# Help
+	# TODO Increase AI willingness
     option = {
         name = "sp_flavor_80yw.62.c"
 
@@ -1048,6 +1074,7 @@ country_event = {
 		set_country_flag = sp_flavor_80yw_help
     }
 	# Ignore
+	# TODO Decrease AI willingness
     option = {
         name = "sp_flavor_80yw.62.d6"
 
@@ -1109,6 +1136,7 @@ country_event = {
         name = "sp_flavor_80yw.62.a"
 	}
 	# Promise join (Dutch/Frisian nations)
+	# TODO: AI always picks this option, unless it's a subject nation
     option = {
 		trigger = {
 			was_player = no
@@ -1135,6 +1163,7 @@ country_event = {
         name = "sp_flavor_80yw.62.b"
     }
 	# Promise provinces and alliance
+	# TODO Set AI willingness to 0
     option = {
 		trigger = {
 			NOT = {
@@ -1154,6 +1183,7 @@ country_event = {
 		set_country_flag = sp_flavor_80yw_ally
     }
 	# Ally
+	# TODO decrease AI willingness
     option = {
 		trigger = {
 			NOT = { 
@@ -1168,6 +1198,7 @@ country_event = {
 		set_country_flag = sp_flavor_80yw_ally
     }
 	# Help
+	# TODO increase AI willingness
     option = {
         name = "sp_flavor_80yw.62.e"
 
@@ -1175,6 +1206,7 @@ country_event = {
 		set_country_flag = sp_flavor_80yw_help
     }
 	# Ignore
+	# TODO decrease AI willingness
     option = {
         name = "sp_flavor_80yw.62.f"
 
@@ -1241,6 +1273,8 @@ country_event = {
 			}
 			else = {
 				release = NED
+				change_government_via_reform = monarchy
+				add_government_reform = administrative_monarchy
 				NED = {
 					define_ruler = {
 						name = "Staten-Generaal"
@@ -1295,8 +1329,30 @@ country_event = {
 						set_in_empire = no
 					}
 				}
-				# Force kingdom rank
+				# Force kingdom rank, remove theocracy
 				set_government_rank	= 2
+				if = {
+					limit = {
+						government = theocracy
+						religion = catholic
+					}
+					change_government = monarchy
+					set_legacy_government = administrative_monarchy
+					PAP = {
+						add_opinion = {
+							who = ROOT
+							modifier = opinion_displeased
+						}
+					}
+				}
+				if = {
+					limit = {
+						government = theocracy
+						NOT = { religion = catholic }
+					}
+					change_government = monarchy
+					set_legacy_government = administrative_monarchy
+				}
 				# Add accepted cultures for Frisian and Dutch
 				if = {
 					limit = {
@@ -1528,15 +1584,6 @@ country_event = {
 
 	desc = "sp_flavor_80yw.200.d"
     picture = CIVIL_WAR_eventPicture
-	
-	immediate = {
-		hidden_effect = {
-			country_event = {
-				id = sp_flavor_80yw.201
-				days = 365
-			}
-		}
-	}
 
     # William of Orange flees the country
     option = {
