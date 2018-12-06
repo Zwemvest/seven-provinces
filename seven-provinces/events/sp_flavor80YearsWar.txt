@@ -932,19 +932,10 @@ country_event = {
 						OR = {
 							tag = ROOT 
 							tag = NED
-							primary_culture = dutch
-							primary_culture = frisian
-							primary_culture = flemish
 						}
 					}
 					any_owned_province = {
 						region = low_countries_region
-					}
-					num_of_owned_provinces_with = {
-						value = 6
-						NOT = { 
-							region = low_countries_region
-						}
 					}
 				}
 				country_event = {
@@ -960,6 +951,7 @@ country_event = {
 		hidden_effect = {
 			country_event = {
 				id = sp_flavor_80yw.64
+				days = 365
 			}
 		}
     }
@@ -1024,7 +1016,7 @@ country_event = {
 
 	# Promise provinces and alliance
     option = {
-		limit = {
+		trigger = {
 			any_owned_province = {
 				region = low_countries_region
 			}
@@ -1036,7 +1028,7 @@ country_event = {
     }
 	# Ally
     option = {
-		limit = {
+		trigger = {
 			NOT = { 
 				any_owned_province = {
 					region = low_countries_region
@@ -1060,6 +1052,7 @@ country_event = {
         name = "sp_flavor_80yw.62.d6"
 
 		custom_tooltip = sp_flavor_80yw_ignore
+		set_country_flag = sp_flavor_80yw_ignore
     }
 }
 
@@ -1085,42 +1078,105 @@ country_event = {
 		set_country_flag = sp_flavor_80yw_askhelp
 	}
 
+	# Option if there's A SINGLE player in the low countries: inherit Dutch provinces, declare 80-Years-War.
+	option = {
+		trigger = {
+			OR = {
+				primary_culture = dutch
+				primary_culture = frisian
+			}
+			OR = {
+				was_player = yes
+				ai = no
+			}
+			NOT = {
+				calc_true_if = {
+					all_country = {
+						OR = {
+							primary_culture = dutch
+							primary_culture = frisian
+						}
+						was_player = yes
+					}
+					amount = 2
+				}
+			}
+		}
+		custom_tooltip = sp_flavor_80yw_form
+
+		set_country_flag = sp_flavor_80yw_form_netherlands
+		set_global_flag = sp_flavor_80yw_form_netherlands
+        name = "sp_flavor_80yw.62.a"
+	}
+	# Promise join (Dutch/Frisian nations)
+    option = {
+		trigger = {
+			was_player = no
+			ai = yes
+			OR = {
+				primary_culture = dutch
+				primary_culture = frisian
+			}
+			any_owned_province = {
+				region = low_countries_region
+			}
+			NOT = {
+				num_of_owned_provinces_with = {
+					value = 3
+					NOT = { 
+						region = low_countries_region
+					}
+				}
+			}
+		}
+		custom_tooltip = sp_flavor_80yw_join
+
+		set_country_flag = sp_flavor_80yw_join
+        name = "sp_flavor_80yw.62.b"
+    }
 	# Promise provinces and alliance
     option = {
-		limit = {
+		trigger = {
+			NOT = {
+				OR = {
+					primary_culture = dutch
+					primary_culture = frisian
+					primary_culture = flemish
+				}
+			}
 			any_owned_province = {
 				region = low_countries_region
 			}
 		}
-        name = "sp_flavor_80yw.62.a"
+        name = "sp_flavor_80yw.62.c"
 
 		custom_tooltip = sp_flavor_80yw_provinces
 		set_country_flag = sp_flavor_80yw_ally
     }
 	# Ally
     option = {
-		limit = {
+		trigger = {
 			NOT = { 
 				any_owned_province = {
 					region = low_countries_region
 				}
 			}
 		}
-        name = "sp_flavor_80yw.62.b"
+        name = "sp_flavor_80yw.62.d2"
 
 		custom_tooltip = sp_flavor_80yw_ally
 		set_country_flag = sp_flavor_80yw_ally
     }
 	# Help
     option = {
-        name = "sp_flavor_80yw.62.c"
+        name = "sp_flavor_80yw.62.e"
 
 		custom_tooltip = sp_flavor_80yw_help
 		set_country_flag = sp_flavor_80yw_help
     }
 	# Ignore
     option = {
-        name = "sp_flavor_80yw.62.d6"
+        name = "sp_flavor_80yw.62.f"
 
 		custom_tooltip = sp_flavor_80yw_ignore
     }
@@ -1153,46 +1209,138 @@ country_event = {
 				discover_country = NED
 				add_core = NED
 			}
-			release = NED
-			# All owned Dutch, Frisian, and Flemish provinces are ceded. Add claims to all others (including provinces held by others).
-			low_countries_region = {
-				add_claim = NED
+			if = {
+				limit = {
+					has_global_flag = sp_flavor_80yw_form_netherlands
+				}
+				every_country = {
+					limit = {
+						has_country_flag = sp_flavor_80yw_form_netherlands
+					}
+					change_tag = NED
+					swap_non_generic_missions = yes
+					set_country_flag = formed_netherlands_flag
+					ROOT = {
+						every_owned_province = {
+							limit = {
+								region = low_countries_region
+								is_core = NED
+								is_capital = no
+							}
+							cede_province = NED
+						}
+					}
+					if = {
+						limit = {
+							has_custom_ideas = no
+							NOT = { has_idea_group = NED_ideas }
+						}
+						country_event = { id = ideagroups.1 } #Swap Ideas
+					}
+				}
+			}
+			else = {
+				release = NED
+				NED = {
+					define_ruler = {
+						name = "Staten-Generaal"
+						dip = 3
+						adm = 3
+						mil = 3					
+						fixed = yes
+						regency = yes
+					}
+					capital_scope = {
+						build_to_forcelimit = {
+							infantry = 0.6
+							cavalry = 0.3
+							artillery = 0.1
+						}
+					}
+					random_owned_province = {
+						limit = {
+							has_port = yes
+						}
+						build_to_forcelimit = {
+							heavy_ship = 0.3
+							light_ship = 0.3
+							transport = 0.2
+						}
+					}
+					add_manpower = 10
+					add_sailors = 5000
+					add_treasury = 1500
+					add_adm_power = 250
+					add_dip_power = 250
+					add_mil_power = 250
+				}
 			}
 			NED = {
-				define_ruler = {
-					name = "Staten-Generaal"
-					dip = 3
-					adm = 3
-					mil = 3					
-					fixed = yes
-					regency = yes
+				# All owned Dutch, Frisian, and Flemish provinces are ceded. Add claims to all others (including provinces held by others).
+				low_countries_region = {
+					add_claim = NED
 				}
-				set_government_rank	= 2
-				add_accepted_culture = frisian
-				add_accepted_culture = flemish
-				capital_scope = {
-					build_to_forcelimit = {
-						infantry = 0.6
-						cavalry = 0.3
-						artillery = 0.1
-					}
-				}
-				random_owned_province = {
+				if = {
 					limit = {
-						has_port = yes
+						any_owned_province = {
+							is_part_of_hre = yes
+						}
+						is_elector = no
+						is_emperor = no
 					}
-					build_to_forcelimit = {
-						heavy_ship = 0.3
-						light_ship = 0.3
-						transport = 0.2
+					every_owned_province = {
+						limit = {
+							is_part_of_hre = yes
+						}
+						set_in_empire = no
 					}
 				}
-				add_manpower = 10
-				add_sailors = 5000
-				add_treasury = 1500
-				add_adm_power = 250
-				add_dip_power = 250
-				add_mil_power = 250
+				# Force kingdom rank
+				set_government_rank	= 2
+				# Add accepted cultures for Frisian and Dutch
+				if = {
+					limit = {
+						any_owned_province = {
+							culture = frisian
+						}
+						NOT = {
+							OR = {
+								primary_culture = frisian 
+								accepted_culture = frisian
+							}
+						}
+					}
+					add_accepted_culture = frisian
+				}
+				if = {
+					limit = {
+						any_owned_province = {
+							culture = dutch
+						}
+						NOT = { 
+							OR = {
+								primary_culture = dutch 
+								accepted_culture = dutch
+							}
+						}
+					}
+					add_accepted_culture = dutch
+				}
+				if = {
+					limit = {
+						any_owned_province = {
+							culture = flemish
+						}
+						NOT = { 
+							OR = {
+								primary_culture = flemish 
+								accepted_culture = flemish
+							}
+						}
+					}
+					add_accepted_culture = flemish
+				}
+				
 				define_general = {
 					name = "Willem van Oranje"
 					shock = 3
@@ -1200,30 +1348,13 @@ country_event = {
 					manuever = 4
 					siege = 2
 				}
-				# Everyone that promised an alliance
-				#every_country = {
-				#	limit = { has_country_flag = sp_flavor_80yw_ally }
-				#	reverse_add_opinion = {
-				#		who = NED
-				#		modifier = ned_ally_during_80yw
-				#	}
-				#	add_opinion = {
-				#		who = NED
-				#		modifier = ned_ally_during_80yw
-				#	}
-				#	add_trust = {
-				#		who = NED
-				#		value = 10
-				#		mutual = yes
-				#	}
-				#	create_alliance = NED
-				#}
 				# Everyone that promised to help or owns a province in the low countries region
 				every_country = {
 					limit = { 
 						OR = {
 							has_country_flag = sp_flavor_80yw_help 
 							has_country_flag = sp_flavor_80yw_ally
+							has_country_flag = sp_flavor_80yw_join
 							AND = {
 								NOT = { tag = ROOT }
 								NOT = { tag = NED }
@@ -1317,31 +1448,20 @@ country_event = {
 		}
 		else_if = {
 			limit = {
+				has_country_flag = sp_flavor_80yw_join
+				ai = yes
+				was_player = no
+			}
+			NED = {
+				inherit = ROOT
+			}
+		}
+		else_if = {
+			limit = {
 				has_country_flag = sp_flavor_80yw_help
 			}
 			country_event = {
 				id = sp_flavor_80yw.66
-				days = 10
-			}
-		}
-		if = {
-			limit = {
-				NOT = { 
-					OR = {
-						tag = FROM 
-						tag = NED
-					}
-				}
-				OR = {
-					primary_culture = dutch
-					primary_cuture = frisian
-				}
-				any_owned_province = {
-					region = low_countries_region
-				}
-			}
-			country_event = {
-				id = sp_flavor_80yw.67
 				days = 10
 			}
 		}
@@ -1394,129 +1514,6 @@ country_event = {
 		reverse_add_opinion = {
 			who = NED
 			modifier = ned_empty_promises_during_80yw  
-		}
-    }
-}
-
-# Dutch countries with provinces in the low countries get a "Join or die" event 
-country_event = {
-	id = sp_flavor_80yw.67
-    title = "sp_flavor_80yw.67.t"
-	desc = "sp_flavor_80yw.67.d1"
-	picture = ANGRY_MOB_eventPicture
-	is_triggered_only = yes
-
-	# Join the Dutch (Dutch/Frisian/Flemish, player option)
-	# TODO HOLY SHIT DO I NOT KNOW IF THIS WORKS :(
-    option = {
-		limit = {
-			was_player = yes
-			NOT = {
-				calc_true_if = {
-					every_country = {
-						OR = {
-							primary_culture = dutch
-							primary_cuture = frisian
-						}
-						was_player = yes
-					}
-					amount = 2
-				}
-			}
-		}
-		
-		inherit = NED
-		change_tag = NED
-		swap_non_generic_missions = yes
-
-		# All owned Dutch, Frisian, and Flemish provinces are ceded. Add claims to all others (including provinces held by others).
-		low_countries_region = {
-			add_claim = NED
-		}
-		NED = {
-			define_ruler = {
-				name = "Staten-Generaal"
-				dip = 3
-				adm = 3
-				mil = 3					
-				fixed = yes
-				regency = yes
-			}
-			set_government_rank	= 2
-			add_accepted_culture = frisian
-			add_accepted_culture = flemish
-			define_general = {
-				name = "Willem van Oranje"
-				shock = 3
-				fire = 3
-				manuever = 4
-				siege = 2
-			}
-			every_country = {
-				limit = { 
-					OR = {
-						has_country_flag = sp_flavor_80yw_help 
-						has_country_flag = sp_flavor_80yw_ally
-						AND = {
-							NOT = { tag = ROOT }
-							NOT = { tag = NED }
-							any_owned_province = {
-								region = low_countries_region
-							}
-						}
-					}
-				}
-				country_event = {
-					id = sp_flavor_80yw.65
-				}
-			}
-			# Remove cores of Dutch minors if they join
-			every_owned_province = {
-				every_core_country = {
-					limit = {
-						primary_culture = dutch
-						NOT = {
-							tag = NED
-						} 
-					}
-					PREV = {
-						remove_core = PREV
-					}
-				}
-			}
-			declare_war_with_cb = {
-				who = ROOT
-				casus_belli = cb_sp_flavor_80yw_independence_war
-			}
-		}
-
-        name = "sp_flavor_80yw.67.a"
-		
-    }    
-	# Join the Dutch (Dutch/Frisian/Flemish, AI option)
-    option = {
-		limit = {
-
-		}
-        name = "sp_flavor_80yw.67.a"
-		
-		if = {
-			NOT = {
-				calc_true_if = {
-					all_country = {
-						religion = protestant
-					}
-					amount = 2
-				}
-			}
-		}
-    }    
-	# We support their plight
-	option = {
-        name = "sp_flavor_80yw.67.a"
-		
-		if = {
-
 		}
     }
 }
