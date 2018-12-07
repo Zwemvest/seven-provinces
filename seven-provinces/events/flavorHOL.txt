@@ -396,6 +396,16 @@ country_event = {
 			duration = -1
 		}
 	}
+	###
+	# Seven Provinces added option
+	###
+	option = {
+		name = "sp_flavor_hol.3508.c"
+		add_country_modifier = {
+			name = sp_hol_go_arm
+			duration = -1
+		}
+	}
 }
 
 #Statholder office is made Hereditary in Oranien Dynasty

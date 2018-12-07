@@ -59,6 +59,7 @@
  sp_flavor_hol.5.d:0 "A gang of bandits are roaming the countryside. The locals call them the Bokkenryders!... The Buckriders are a part of Belgian and Dutch folklore, ghosts or demons, who rode through the sky on the back of flying goats provided to them by Satan."
  sp_flavor_hol.5.a:0 "People are supersticious..."
  sp_flavor_hol.5.b:0 "Deal with the Buckriders!"
+ sp_flavor_hol.3508.c:0 "Find a middleground for this doctrinal dispute."
  buckriders_rebels_title:0 "Buckriders"
  buckriders_rebels_name:0 "$COUNTRY$ Buckriders"
  buckriders_rebels_desc:0 "The Buckriders are a part of Belgian and Dutch folklore, ghosts or demons, who rode through the sky on the back of flying goats provided to them by Satan."

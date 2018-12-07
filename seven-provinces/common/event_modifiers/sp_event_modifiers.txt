@@ -40,3 +40,7 @@ sp_alva_concede_province = {
 	local_culture_conversion_cost = 0.5
 	religious_conversion_resistance = -0.2
 }
+
+sp_hol_go_arm = {
+	stability_cost_modifier = -0.1
+}
